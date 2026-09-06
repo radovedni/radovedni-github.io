@@ -98,6 +98,32 @@
         }
       ],
       "gallery": []
+    },
+    {
+      "id": "gfgg-89pz",
+      "date": "2026-09-06",
+      "type": "zgodba",
+      "category": "Razvedrilo",
+      "author": "",
+      "title": "gfgg",
+      "summary": "ghfhf",
+      "coverImage": "https://i.imgur.com/y13pAJN.jpeg",
+      "content": [
+        {
+          "type": "text",
+          "value": "fghdfghdfghdfghdfghf"
+        },
+        {
+          "type": "image",
+          "url": "https://i.imgur.com/y13pAJN.jpeg",
+          "caption": "gfhfghfghfghfg"
+        },
+        {
+          "type": "text",
+          "value": "gfhfghfghfghfghf"
+        }
+      ],
+      "gallery": []
     }
   ]
 }
