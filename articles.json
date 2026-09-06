@@ -1,0 +1,87 @@
+{
+  "site": {
+    "title": "Radovedni",
+    "subtitle": "Revija za radovedne — stripi, ilustracije in zgodbe za mlade raziskovalce.",
+    "categories": ["Matematika", "Fizika", "Geografija", "Biologija", "Kemija", "Razvedrilo"]
+  },
+  "articles": [
+    {
+      "id": "a_demo_matematika_1",
+      "type": "comic",
+      "title": "Skrivnost praštevil",
+      "category": "Matematika",
+      "author": "Uredništvo Radovedni",
+      "excerpt": "Robi in Manca odkrijeta, zakaj so nekatera števila posebna – in kako si s tem lahko pomagamo pri skrivnostnih šiframa.",
+      "coverImage": "https://picsum.photos/seed/radovedni-math-cover/900/600",
+      "date": "2026-09-01",
+      "panels": [
+        {"url": "https://picsum.photos/seed/radovedni-math-1/720/1280", "format": "9:16", "caption": "Robi najde staro skrinjico s skrivnostnim zaklepom."},
+        {"url": "https://picsum.photos/seed/radovedni-math-2/720/1280", "format": "9:16", "caption": "\"Koda je sestavljena samo iz praštevil,\" pravi Manca."},
+        {"url": "https://picsum.photos/seed/radovedni-math-3/720/1280", "format": "9:16", "caption": "2, 3, 5, 7, 11 … Robi začne iskati vzorec."},
+        {"url": "https://picsum.photos/seed/radovedni-math-4/720/1280", "format": "9:16", "caption": "Skrinjica se odpre! Znotraj je zemljevid šolskega vrta."},
+        {"url": "https://picsum.photos/seed/radovedni-math-5/720/1280", "format": "9:16", "caption": "\"Matematika je najboljši ključ,\" se nasmehne Manca."}
+      ]
+    },
+    {
+      "id": "a_demo_biologija_1",
+      "type": "story",
+      "title": "Kako čebele govorijo s plesom",
+      "category": "Biologija",
+      "author": "Ana Kovač",
+      "excerpt": "Čebele nimajo besed, a znajo druga drugi povedati, kje najti najboljše cvetje. Odkrijmo njihov skrivnostni jezik.",
+      "coverImage": "https://picsum.photos/seed/radovedni-bee-cover/900/600",
+      "date": "2026-08-28",
+      "content": [
+        {"type": "text", "value": "Ko čebela delavka najde bogato cvetočo trato, se vrne v panj in svojim sestram sporoči novico – ne z besedami, ampak s plesom."},
+        {"type": "image", "url": "https://picsum.photos/seed/radovedni-bee-1/800/500", "caption": "Čebela na cvetu nabira nektar in cvetni prah."},
+        {"type": "text", "value": "Ta ples imenujemo 'ples v osmici'. Čebela se giblje v obliki črke 8, pri tem pa z gibanjem telesa pokaže smer, razdaljo in kakovost hrane."},
+        {"type": "image", "url": "https://picsum.photos/seed/radovedni-bee-2/800/500", "caption": "Prikaz plesa v osmici v panju."},
+        {"type": "text", "value": "Bolj ko je vir hrane bogat, hitreje in bolj vztrajno čebela pleše. Druge čebele jo pozorno spremljajo z antenami in si zapomnijo pot."},
+        {"type": "text", "value": "Znanstveniki so ta jezik razvozlali šele v 20. stoletju, raziskovalec Karl von Frisch pa je zanj prejel Nobelovo nagrado."}
+      ],
+      "gallery": [
+        "https://picsum.photos/seed/radovedni-bee-g1/500/500",
+        "https://picsum.photos/seed/radovedni-bee-g2/500/500",
+        "https://picsum.photos/seed/radovedni-bee-g3/500/500",
+        "https://picsum.photos/seed/radovedni-bee-g4/500/500"
+      ]
+    },
+    {
+      "id": "a_demo_razvedrilo_1",
+      "type": "comic",
+      "title": "Robotek Gumb reši dan",
+      "category": "Razvedrilo",
+      "author": "Jure Novak",
+      "excerpt": "Majhen robot z velikim srcem pomaga sošolcem, ko se v šoli pokvari zvonec tik pred odmorom.",
+      "coverImage": "https://picsum.photos/seed/radovedni-robot-cover/900/600",
+      "date": "2026-09-04",
+      "panels": [
+        {"url": "https://picsum.photos/seed/radovedni-robot-1/1000/1000", "format": "1:1", "caption": "Zvonec obmolkne ravno pred odmorom!"},
+        {"url": "https://picsum.photos/seed/radovedni-robot-2/1000/1000", "format": "1:1", "caption": "Gumb pohiti do razdelilne omarice."},
+        {"url": "https://picsum.photos/seed/radovedni-robot-3/1000/1000", "format": "1:1", "caption": "S pomočjo svoje svetilke najde napako."},
+        {"url": "https://picsum.photos/seed/radovedni-robot-4/1000/1000", "format": "1:1", "caption": "Zvonec spet zazvoni – odmor se lahko začne!"}
+      ]
+    },
+    {
+      "id": "a_demo_geografija_1",
+      "type": "story",
+      "title": "Potovanje do najglobljega dna oceana",
+      "category": "Geografija",
+      "author": "Uredništvo Radovedni",
+      "excerpt": "Marianski jarek je najgloblje mesto na Zemlji – globlje, kot je visoka gora Everest. Kaj vse se skriva tam spodaj?",
+      "coverImage": "https://picsum.photos/seed/radovedni-ocean-cover/900/600",
+      "date": "2026-08-20",
+      "content": [
+        {"type": "text", "value": "Če bi goro Everest potopili v Marianski jarek, bi njen vrh še vedno ostal skoraj dva kilometra pod gladino vode."},
+        {"type": "image", "url": "https://picsum.photos/seed/radovedni-ocean-1/800/500", "caption": "Prerez oceana prikazuje neverjetne globine."},
+        {"type": "text", "value": "V popolni temi, kjer sonce nikoli ne posije, živijo posebna bitja, prilagojena na ogromen pritisk vode."},
+        {"type": "text", "value": "Prvi ljudje so dno jarka dosegli leta 1960, danes pa raziskovalne podmornice tja potapljajo tudi znanstvene odprave."}
+      ],
+      "gallery": [
+        "https://picsum.photos/seed/radovedni-ocean-g1/500/500",
+        "https://picsum.photos/seed/radovedni-ocean-g2/500/500",
+        "https://picsum.photos/seed/radovedni-ocean-g3/500/500"
+      ]
+    }
+  ]
+}
