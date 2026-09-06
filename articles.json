@@ -1,0 +1,54 @@
+{
+  "settings": {
+    "title": "Radovedni",
+    "subtitle": "Stripi, ilustracije in zgodbe za radovedne glave",
+    "description": "Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce — polna stripov, ilustriranih zgodb in zanimivosti iz sveta znanosti.",
+    "categories": [
+      "Matematika",
+      "Fizika",
+      "Kemija",
+      "Biologija",
+      "Geografija",
+      "Zgodovina",
+      "Slovenščina",
+      "Razvedrilo"
+    ]
+  },
+  "articles": [
+    {
+      "id": "dobrodoslica-2026",
+      "type": "zgodba",
+      "category": "Razvedrilo",
+      "title": "Dobrodošli v Radovednih!",
+      "author": "Uredništvo",
+      "summary": "Prva stran nove revije, ki bo polnila vaše popoldneve s stripi, zgodbami in znanostjo.",
+      "coverImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80",
+      "date": "2026-09-01",
+      "content": [
+        { "type": "text", "value": "Pozdravljeni, radovedneži! Pred vami je prva številka revije Radovedni — mesta, kjer se znanost, domišljija in dobra zabava srečajo na eni strani." },
+        { "type": "text", "value": "Tukaj boste našli stripe, ki jih lahko berete kar na telefonu, panel za panelom, ter zgodbe polne ilustracij. Vsak teden bomo dodali kaj novega iz matematike, fizike, kemije, biologije, geografije, zgodovine in seveda razvedrila." },
+        { "type": "image", "url": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80", "caption": "Naša uredniška ekipa v akciji." },
+        { "type": "text", "value": "Če imaš idejo za strip ali zgodbo, nam jo pošlji — morda bo prav tvoja ideja naslednja objavljena stran!" }
+      ],
+      "gallery": [
+        "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"
+      ]
+    },
+    {
+      "id": "strip-vesoljski-poskus",
+      "type": "strip",
+      "category": "Fizika",
+      "title": "Vesoljski poskus",
+      "author": "Ana K.",
+      "summary": "Kratek strip o tem, kaj se zgodi s kapljico vode v breztežnostnem stanju.",
+      "coverImage": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&q=80",
+      "date": "2026-09-03",
+      "panels": [
+        { "url": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=900&q=80", "format": "9:16" },
+        { "url": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=900&q=80", "format": "9:16" },
+        { "url": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=900&q=80", "format": "9:16" }
+      ]
+    }
+  ]
+}
