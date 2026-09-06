@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Radovedni — Revija stripov, ilustracij in zgodb</title>
+<meta name="description" content="Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce — stripi, ilustracije in zgodbe iz sveta znanosti.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast" hidden></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#/" class="logo" id="logoLink">
+      <span class="logo-icon">🔎</span>
+      <span class="logo-text">
+        <span class="logo-title" id="siteTitleText">Radovedni</span>
+        <span class="logo-sub" id="siteSubtitleText">Stripi &amp; zgodbe za radovedne glave</span>
+      </span>
+    </a>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchToggleBtn" title="Iskanje" aria-label="Iskanje">🔍</button>
+      <button class="icon-btn" id="loginBtn" title="Uredniški dostop" aria-label="Prijava">🔑</button>
+      <button class="icon-btn" id="settingsBtn" title="Nastavitve" aria-label="Nastavitve" hidden>⚙️</button>
+      <span class="admin-pill" id="adminPill" hidden>✦ Urednik</span>
+      <button class="btn btn-ghost" id="logoutBtn" hidden>Odjava</button>
+    </div>
+  </div>
+  <div class="search-bar" id="searchBar" hidden>
+    <input type="text" id="searchInput" placeholder="Išči članke, stripe, zgodbe ...">
+  </div>
+</header>
+
+<div class="admin-toolbar" id="adminToolbar" hidden>
+  <div class="admin-toolbar-inner">
+    <span>✦ Uredniški način — spremembe lahko objaviš neposredno na GitHub</span>
+    <div class="admin-toolbar-buttons">
+      <button class="btn btn-light" id="openSettingsBtn2">Nastavitve</button>
+      <button class="btn btn-primary" id="newArticleBtn">+ Nov članek</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 id="heroTitle">Radovedni</h1>
+    <p id="heroSubtitle">Stripi, ilustracije in zgodbe za radovedne glave — beri, uči se, uživaj.</p>
+  </div>
+</section>
+
+<nav class="category-nav" id="categoryNav">
+  <button class="cat-pill active" data-cat="__vse__">Vse</button>
+</nav>
+
+<main class="content-wrap">
+  <div class="section-heading">
+    <h2 id="sectionHeadingText">Najnovejše</h2>
+    <button class="link-btn" id="refreshBtn">↺ Osveži</button>
+  </div>
+  <div class="grid" id="grid">
+    <div class="loading-msg">Nalaganje člankov…</div>
+  </div>
+  <div class="empty-msg" id="emptyMsg" hidden>Ni najdenih člankov v tej rubriki.</div>
+</main>
+
+<footer class="site-footer">
+  <p><strong>Radovedni</strong> · Revija za radovedne glave · izobraževanje in zabava</p>
+  <p class="footer-fine">Narejeno z ♥ za mlade raziskovalce · © <span id="footerYear"></span></p>
+</footer>
+
+<!-- ============ STRIP READER (9:16 panel viewer) ============ -->
+<div class="strip-reader" id="stripReader" hidden>
+  <div class="reader-top">
+    <button class="reader-close" id="stripCloseBtn" aria-label="Zapri">✕</button>
+    <div class="reader-title" id="stripReaderTitle">Naslov stripa</div>
+    <div class="reader-counter" id="stripCounter">1 / 1</div>
+  </div>
+  <div class="reader-progress" id="stripProgress"></div>
+  <div class="reader-stage" id="stripStage">
+    <button class="reader-nav reader-nav-left" id="stripPrevBtn" aria-label="Prejšnji panel">‹</button>
+    <div class="panel-frame" id="panelFrame">
+      <img id="panelImage" src="" alt="Panel stripa" draggable="false">
+    </div>
+    <button class="reader-nav reader-nav-right" id="stripNextBtn" aria-label="Naslednji panel">›</button>
+  </div>
+  <div class="reader-hint">Tapni levo/desno ali podrsaj za naslednji panel</div>
+</div>
+
+<!-- ============ STORY READER (zgodba) ============ -->
+<div class="story-reader" id="storyReader" hidden>
+  <div class="story-reader-inner">
+    <button class="reader-close story-close" id="storyCloseBtn" aria-label="Zapri">✕</button>
+    <div id="storyContent"></div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="reader-close" id="lightboxCloseBtn" aria-label="Zapri">✕</button>
+  <img id="lightboxImage" src="" alt="">
+</div>
+
+<!-- ============ NEW / EDIT ARTICLE MODAL ============ -->
+<div class="modal-overlay" id="articleModalOverlay" hidden>
+  <div class="modal" id="articleModal">
+    <div class="modal-header">
+      <h3 id="articleModalTitle">Nov članek</h3>
+      <button class="modal-x" id="articleModalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="type-toggle">
+        <button class="type-btn active" data-type="strip" id="typeStripBtn">📱 Strip (paneli 9:16)</button>
+        <button class="type-btn" data-type="zgodba" id="typeZgodbaBtn">📖 Zgodba za branje</button>
+      </div>
+
+      <div class="form-row two-col">
+        <div class="form-field">
+          <label>Rubrika *</label>
+          <select id="fieldCategory"></select>
+        </div>
+        <div class="form-field">
+          <label>Avtor</label>
+          <input type="text" id="fieldAuthor" placeholder="npr. Ana K.">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Naslov članka *</label>
+        <input type="text" id="fieldTitle" placeholder="Naslov...">
+      </div>
+
+      <div class="form-field">
+        <label>Kratki povzetek</label>
+        <textarea id="fieldSummary" rows="2" placeholder="Kratek opis, ki se prikaže na kartici..."></textarea>
+      </div>
+
+      <div class="form-field">
+        <label>URL naslovne slike</label>
+        <input type="text" id="fieldCover" placeholder="https://...">
+        <span class="field-hint">Priporočeno razmerje 3:2 (npr. 1200 × 800 px)</span>
+      </div>
+
+      <!-- STRIP PANELS -->
+      <div id="panelsSection">
+        <div class="form-field">
+          <label>Paneli stripa (v vrstnem redu branja)</label>
+          <span class="field-hint">Dodaj URL vsakega panela. Priporočen format 9:16 — lepo se prikaže na telefonu.</span>
+          <div id="panelsList" class="dynamic-list"></div>
+          <button class="btn btn-light btn-sm" id="addPanelBtn">+ Dodaj panel</button>
+        </div>
+      </div>
+
+      <!-- ZGODBA CONTENT BLOCKS -->
+      <div id="contentSection" hidden>
+        <div class="form-field">
+          <label>Vsebina zgodbe *</label>
+          <span class="field-hint">Dodajaj odstavke besedila in slike v poljubnem vrstnem redu.</span>
+          <div id="contentList" class="dynamic-list"></div>
+          <div class="add-content-buttons">
+            <button class="btn btn-light btn-sm" id="addTextBlockBtn">+ Odstavek besedila</button>
+            <button class="btn btn-light btn-sm" id="addImageBlockBtn">+ Slika</button>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Galerija (prikazana pod člankom)</label>
+          <div id="galleryList" class="dynamic-list"></div>
+          <button class="btn btn-light btn-sm" id="addGalleryBtn">+ Dodaj sliko v galerijo</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" id="deleteArticleBtn" hidden>Izbriši članek</button>
+      <div class="modal-footer-right">
+        <button class="btn btn-ghost" id="articleCancelBtn">Prekliči</button>
+        <button class="btn btn-primary" id="articleSaveBtn">Objavi članek</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SETTINGS MODAL ============ -->
+<div class="modal-overlay" id="settingsModalOverlay" hidden>
+  <div class="modal" id="settingsModal">
+    <div class="modal-header">
+      <h3>Nastavitve uredništva</h3>
+      <button class="modal-x" id="settingsModalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="settings-section">
+        <h4>GitHub integracija</h4>
+        <p class="field-hint">Spremembe se objavijo neposredno v tvoj GitHub repozitorij (datoteka articles.json).</p>
+        <div class="form-field">
+          <label>GitHub žeton (Personal Access Token)</label>
+          <input type="password" id="ghToken" placeholder="ghp_...">
+          <span class="field-hint">Žeton potrebuje dovoljenje <code>repo</code> (fine-grained: Contents – Read/Write). Shrani se samo lokalno v tvojem brskalniku.</span>
+        </div>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label>Lastnik repozitorija</label>
+            <input type="text" id="ghOwner" placeholder="npr. mojuporabnik">
+          </div>
+          <div class="form-field">
+            <label>Ime repozitorija</label>
+            <input type="text" id="ghRepo" placeholder="npr. radovedni">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div class="form-field">
+            <label>Veja (branch)</label>
+            <input type="text" id="ghBranch" placeholder="main" value="main">
+          </div>
+          <div class="form-field">
+            <label>Pot do articles.json</label>
+            <input type="text" id="ghPath" placeholder="articles.json" value="articles.json">
+          </div>
+        </div>
+        <div class="settings-buttons">
+          <button class="btn btn-light" id="ghTestBtn">Preveri povezavo</button>
+          <button class="btn btn-primary" id="ghSaveBtn">Shrani nastavitve</button>
+        </div>
+        <div class="gh-status" id="ghStatus"></div>
+      </div>
+
+      <div class="settings-section">
+        <h4>Rubrike</h4>
+        <div id="categoryManageList" class="category-manage-list"></div>
+        <div class="add-category-row">
+          <input type="text" id="newCategoryInput" placeholder="Ime nove rubrike">
+          <button class="btn btn-light btn-sm" id="addCategoryBtn">Dodaj</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h4>Naslov revije</h4>
+        <div class="form-field">
+          <label>Ime</label>
+          <input type="text" id="settingsTitleInput" placeholder="Radovedni">
+        </div>
+        <div class="form-field">
+          <label>Podnaslov</label>
+          <input type="text" id="settingsSubtitleInput" placeholder="Podnaslov...">
+        </div>
+        <button class="btn btn-primary btn-sm" id="saveTitleBtn">Shrani</button>
+      </div>
+
+      <div class="settings-section">
+        <h4>Varnostna kopija</h4>
+        <p class="field-hint">Če GitHub ni povezan, lahko articles.json prenesete ročno in ga naložite v repozitorij.</p>
+        <button class="btn btn-light" id="downloadJsonBtn">⬇ Prenesi articles.json</button>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-right">
+        <button class="btn btn-ghost" id="settingsCloseBtn2">Zapri</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LOGIN MODAL ============ -->
+<div class="modal-overlay" id="loginModalOverlay" hidden>
+  <div class="modal modal-small" id="loginModal">
+    <div class="modal-header">
+      <h3>Uredniški dostop</h3>
+      <button class="modal-x" id="loginModalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-field">
+        <label>Administratorsko geslo</label>
+        <input type="password" id="loginPasswordInput" placeholder="••••••••">
+        <span class="field-hint" id="loginHint">Geslo nastaviš ob prvi prijavi.</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-right">
+        <button class="btn btn-ghost" id="loginCancelBtn">Prekliči</button>
+        <button class="btn btn-primary" id="loginSubmitBtn">Prijava</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DELETE CONFIRM MODAL ============ -->
+<div class="modal-overlay" id="deleteModalOverlay" hidden>
+  <div class="modal modal-small" id="deleteModal">
+    <div class="modal-header">
+      <h3>Potrditev brisanja</h3>
+      <button class="modal-x" id="deleteModalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Ali ste prepričani, da želite izbrisati ta članek? Tega dejanja ni mogoče razveljaviti.</p>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-right">
+        <button class="btn btn-ghost" id="deleteCancelBtn">Prekliči</button>
+        <button class="btn btn-danger" id="deleteConfirmBtn">Izbriši</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
