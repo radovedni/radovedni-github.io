@@ -32,6 +32,12 @@
   --font-body:'Nunito', system-ui, sans-serif;
 }
 
+/* KLJUČNO: brskalnikovo privzeto pravilo [hidden]{display:none} ima enako
+   specifičnost kot naši razredi (.strip-reader, .lightbox, .modal-overlay ...),
+   ki eksplicitno postavijo display:flex. Brez !important bi te razrede
+   overlay ostal viden tudi, ko ima hidden="" atribut. */
+[hidden]{display:none !important;}
+
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
@@ -44,6 +50,14 @@ img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
 input,select,textarea{font-family:inherit;}
+
+/* ---------- File warning banner ---------- */
+.file-warning{
+  background:#FFF4D6;color:#7A5400;font-weight:700;font-size:13.5px;
+  text-align:center;padding:10px 16px;border-bottom:1px solid #F3DE9E;
+  line-height:1.5;
+}
+.file-warning code{background:#FCE8B0;padding:1px 6px;border-radius:5px;}
 
 /* ---------- Header ---------- */
 .site-header{
@@ -369,6 +383,12 @@ input,select,textarea{font-family:inherit;}
 
 <div id="toast" class="toast" hidden></div>
 
+<div class="file-warning" id="fileWarning" hidden>
+  ⚠️ Stran je odprta neposredno iz datoteke, zato prikazuje vgrajene vzorčne članke, ne trenutnega <code>articles.json</code>.
+  Za pravo delovanje objavi mapo na <strong>GitHub Pages</strong>, ali datoteke zaženi prek lokalnega strežnika
+  (npr. <code>python3 -m http.server</code>) — glej README.
+</div>
+
 <header class="site-header">
   <div class="header-inner">
     <a href="#/" class="logo" id="logoLink">
@@ -673,6 +693,87 @@ input,select,textarea{font-family:inherit;}
 (function(){
 "use strict";
 
+/* Vgrajena rezervna kopija podatkov — uporabi se, če fetch("articles.json")
+   ni mogoč (npr. stran odprta neposredno z dvoklikom kot file://).
+   Ta blok se pri združevanju v eno index.html datoteko samodejno
+   napolni z vsebino articles.json — glej build/merge skripto. */
+window.EMBEDDED_DATA = {
+  "settings": {
+    "title": "Radovedni",
+    "subtitle": "Stripi, ilustracije in zgodbe za radovedne glave",
+    "description": "Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce — polna stripov, ilustriranih zgodb in zanimivosti iz sveta znanosti.",
+    "categories": [
+      "Matematika",
+      "Fizika",
+      "Kemija",
+      "Biologija",
+      "Geografija",
+      "Zgodovina",
+      "Slovenščina",
+      "Razvedrilo"
+    ]
+  },
+  "articles": [
+    {
+      "id": "dobrodoslica-2026",
+      "type": "zgodba",
+      "category": "Razvedrilo",
+      "title": "Dobrodošli v Radovednih!",
+      "author": "Uredništvo",
+      "summary": "Prva stran nove revije, ki bo polnila vaše popoldneve s stripi, zgodbami in znanostjo.",
+      "coverImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80",
+      "date": "2026-09-01",
+      "content": [
+        {
+          "type": "text",
+          "value": "Pozdravljeni, radovedneži! Pred vami je prva številka revije Radovedni — mesta, kjer se znanost, domišljija in dobra zabava srečajo na eni strani."
+        },
+        {
+          "type": "text",
+          "value": "Tukaj boste našli stripe, ki jih lahko berete kar na telefonu, panel za panelom, ter zgodbe polne ilustracij. Vsak teden bomo dodali kaj novega iz matematike, fizike, kemije, biologije, geografije, zgodovine in seveda razvedrila."
+        },
+        {
+          "type": "image",
+          "url": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",
+          "caption": "Naša uredniška ekipa v akciji."
+        },
+        {
+          "type": "text",
+          "value": "Če imaš idejo za strip ali zgodbo, nam jo pošlji — morda bo prav tvoja ideja naslednja objavljena stran!"
+        }
+      ],
+      "gallery": [
+        "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"
+      ]
+    },
+    {
+      "id": "strip-vesoljski-poskus",
+      "type": "strip",
+      "category": "Fizika",
+      "title": "Vesoljski poskus",
+      "author": "Ana K.",
+      "summary": "Kratek strip o tem, kaj se zgodi s kapljico vode v breztežnostnem stanju.",
+      "coverImage": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&q=80",
+      "date": "2026-09-03",
+      "panels": [
+        {
+          "url": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=900&q=80",
+          "format": "9:16"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=900&q=80",
+          "format": "9:16"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=900&q=80",
+          "format": "9:16"
+        }
+      ]
+    }
+  ]
+};
+
 /* ---------- Barve rubrik (ciklično) ---------- */
 const CAT_COLORS = ["#6C4DF0","#FF8A3D","#22B8A3","#F2568C","#3D9DFF","#F0A93C","#7BC142","#B14DF0","#4DB6AC","#E0525C"];
 function catColor(cat){
@@ -735,27 +836,46 @@ function slugify(str){
 
 /* ============================================================
    NALAGANJE PODATKOV
-   ============================================================ */
+   ============================================================
+   Stran poskuša najprej prebrati sveži articles.json (prek GitHub
+   API-ja ali z navadnim fetch). Če to ni mogoče (npr. datoteka je
+   odprta neposredno z dvoklikom kot file:// in brskalnik zavrne
+   fetch do druge lokalne datoteke), se uporabi vgrajena rezervna
+   kopija podatkov (EMBEDDED_DATA spodaj), da stran vedno deluje. */
+function isFileProtocol(){
+  return location.protocol === "file:";
+}
 async function loadArticles(){
   $("#grid").innerHTML = '<div class="loading-msg">Nalaganje člankov…</div>';
-  try{
-    if(state.config.ghToken && state.config.ghOwner && state.config.ghRepo){
-      await loadFromGithub();
-    } else {
-      const res = await fetch("articles.json?_=" + Date.now());
-      if(!res.ok) throw new Error("Ni mogoče naložiti articles.json");
-      state.data = await res.json();
-    }
-  }catch(err){
-    console.error(err);
+  $("#fileWarning") && ($("#fileWarning").hidden = true);
+  let loaded = false;
+
+  if(state.config.ghToken && state.config.ghOwner && state.config.ghRepo){
+    try{ await loadFromGithub(); loaded = true; }
+    catch(err){ console.error(err); toast("Napake pri branju z GitHub, poskušam lokalno datoteko..."); }
+  }
+
+  if(!loaded && !isFileProtocol()){
     try{
       const res = await fetch("articles.json?_=" + Date.now());
+      if(!res.ok) throw new Error("HTTP " + res.status);
       state.data = await res.json();
-    }catch(e2){
-      toast("Napaka pri nalaganju člankov.");
-      state.data = { settings:{title:"Radovedni",subtitle:"",description:"",categories:[]}, articles:[] };
+      loaded = true;
+    }catch(err){ console.error(err); }
+  }
+
+  if(!loaded){
+    // Rezervna kopija (deluje tudi brez strežnika, npr. ob dvokliku na index.html)
+    state.data = JSON.parse(JSON.stringify(window.EMBEDDED_DATA || {settings:{title:"Radovedni",subtitle:"",description:"",categories:[]},articles:[]}));
+    loaded = true;
+    if(isFileProtocol()){
+      const w = $("#fileWarning");
+      if(w) w.hidden = false;
+    } else {
+      toast("Ni bilo mogoče naložiti articles.json — prikazani so vgrajeni vzorčni članki.");
     }
   }
+
   if(!state.data.settings) state.data.settings = {title:"Radovedni",subtitle:"",description:"",categories:[]};
   if(!state.data.articles) state.data.articles = [];
   applySettingsToUI();
