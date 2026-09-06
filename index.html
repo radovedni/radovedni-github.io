@@ -4,379 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Radovedni — Revija stripov, ilustracij in zgodb</title>
-<meta name="description" content="Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce — stripi, ilustracije in zgodbe iz sveta znanosti.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8E%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --purple:#6C4DF0;
-  --purple-dark:#4B2FC4;
-  --purple-light:#EFEBFF;
-  --orange:#FF8A3D;
-  --yellow:#FFC93C;
-  --teal:#22B8A3;
-  --pink:#F2568C;
-  --ink:#231C3D;
-  --ink-soft:#5B5670;
-  --bg:#F7F5FB;
-  --card-bg:#FFFFFF;
-  --border:#E9E4F7;
-  --radius-lg:22px;
-  --radius-md:16px;
-  --radius-sm:10px;
-  --shadow-card:0 6px 20px rgba(76,49,196,0.08);
-  --shadow-pop:0 20px 60px rgba(35,28,61,0.25);
-  --font-head:'Baloo 2', system-ui, sans-serif;
-  --font-body:'Nunito', system-ui, sans-serif;
+  --purple:#6C4DF0;--purple-dark:#4B2FC4;--purple-light:#EFEBFF;
+  --orange:#FF8A3D;--yellow:#FFC93C;--teal:#22B8A3;--pink:#F2568C;
+  --ink:#231C3D;--ink-soft:#5B5670;--bg:#F7F5FB;--card-bg:#fff;
+  --border:#E9E4F7;--radius-lg:22px;--radius-md:16px;--radius-sm:10px;
+  --shadow-card:0 6px 20px rgba(76,49,196,.08);--shadow-pop:0 20px 60px rgba(35,28,61,.25);
+  --font-head:'Baloo 2',system-ui,sans-serif;--font-body:'Nunito',system-ui,sans-serif;
 }
+[hidden]{display:none!important}*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}.file-warning{background:#FFF4D6;color:#7A5400;font-weight:700;font-size:13.5px;text-align:center;padding:10px 16px;border-bottom:1px solid #F3DE9E;line-height:1.5}
+.file-warning code{background:#FCE8B0;padding:1px 6px;border-radius:5px}
+.site-header{position:sticky;top:0;z-index:40;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;box-shadow:0 4px 18px rgba(75,47,196,.25)}
+.header-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px}.logo-icon{font-size:30px}.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-title{font-family:var(--font-head);font-weight:800;font-size:24px}.logo-sub{font-size:12px;opacity:.85;font-weight:600}
+.header-actions{display:flex;align-items:center;gap:6px}.icon-btn{background:rgba(255,255,255,.14);border:0;color:#fff;width:38px;height:38px;border-radius:12px;font-size:16px}
+.icon-btn:hover{background:rgba(255,255,255,.26)}.admin-pill{background:var(--yellow);color:var(--ink);font-weight:800;font-size:12px;padding:7px 12px;border-radius:999px}
+.search-bar{max-width:1180px;margin:auto;padding:0 20px 14px}.search-bar input{width:100%;padding:11px 16px;border-radius:999px;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:14px;outline:0}
+.search-bar input::placeholder{color:rgba(255,255,255,.75)}
+.admin-toolbar{background:var(--yellow)}.admin-toolbar-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-weight:700;font-size:13px;color:#4A3200}
+.admin-toolbar-buttons,.modal-footer-right,.settings-buttons,.add-content-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:10px 18px;font-weight:700;font-size:14px}.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 6px 16px rgba(108,77,240,.35)}.btn-primary:hover{background:var(--purple-dark)}
+.btn-light{background:#fff;color:var(--ink);border:1.5px solid var(--border)}.btn-light:hover{border-color:var(--purple)}
+.btn-ghost{background:transparent;color:var(--ink-soft)}.btn-danger{background:#FDE8E8;color:#C13333}.btn-sm{padding:7px 13px;font-size:13px;border-radius:10px}.link-btn{background:0;border:0;color:var(--purple);font-weight:700;font-size:14px}
+.hero{background:radial-gradient(circle at 20% 20%,rgba(255,201,60,.35),transparent 45%),radial-gradient(circle at 85% 30%,rgba(34,184,163,.28),transparent 50%),linear-gradient(180deg,#EFEBFF,var(--bg));padding:44px 20px 30px;text-align:center}
+.hero-inner{max-width:720px;margin:auto}.hero h1{font-family:var(--font-head);font-size:38px;font-weight:800;margin:0 0 8px}.hero p{margin:0;color:var(--ink-soft);font-size:16px;font-weight:600}
+.category-nav{max-width:1180px;margin:auto;padding:18px 20px 4px;display:flex;gap:9px;flex-wrap:wrap}.cat-pill{background:#fff;border:1.5px solid var(--border);color:var(--ink-soft);padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px}
+.cat-pill.active{background:var(--purple);border-color:var(--purple);color:#fff}
+.content-wrap{max-width:1180px;margin:auto;padding:10px 20px 40px}.section-heading{display:flex;align-items:center;justify-content:space-between;margin:18px 0 16px}
+.section-heading h2{font-family:var(--font-head);font-size:22px;margin:0}.loading-msg,.empty-msg{color:var(--ink-soft);padding:40px 0;text-align:center;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}.card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);border:1px solid var(--border);display:flex;flex-direction:column;cursor:pointer;transition:.18s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(76,49,196,.16)}.card-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--purple-light)}
+.card-media img{width:100%;height:100%;object-fit:cover}.card-type-badge{position:absolute;top:10px;left:10px;background:rgba(35,28,61,.75);color:#fff;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px}
+.card-cat-badge{position:absolute;top:10px;right:10px;color:#fff;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px}
+.card-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}.card-title{font-family:var(--font-head);font-size:17px;font-weight:700;line-height:1.25}
+.card-summary{font-size:13.5px;color:var(--ink-soft);line-height:1.4;flex:1}.card-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);font-weight:700;border-top:1px dashed var(--border);padding-top:8px}
+.card-admin-actions{position:absolute;bottom:10px;right:10px;display:flex;gap:6px;z-index:2}.card-admin-actions button{background:rgba(255,255,255,.95);border:0;border-radius:8px;width:30px;height:30px;box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.site-footer{text-align:center;padding:30px 20px 40px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-weight:700;font-size:14px;z-index:300;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:90vw;text-align:center}
 
-/* KLJUČNO: brskalnikovo privzeto pravilo [hidden]{display:none} ima enako
-   specifičnost kot naši razredi (.strip-reader, .lightbox, .modal-overlay ...),
-   ki eksplicitno postavijo display:flex. Brez !important bi te razrede
-   overlay ostal viden tudi, ko ima hidden="" atribut. */
-[hidden]{display:none !important;}
-
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{
-  font-family:var(--font-body);
-  background:var(--bg);
-  color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block;}
-a{color:inherit;text-decoration:none;}
-button{font-family:inherit;cursor:pointer;}
-input,select,textarea{font-family:inherit;}
-
-/* ---------- File warning banner ---------- */
-.file-warning{
-  background:#FFF4D6;color:#7A5400;font-weight:700;font-size:13.5px;
-  text-align:center;padding:10px 16px;border-bottom:1px solid #F3DE9E;
-  line-height:1.5;
-}
-.file-warning code{background:#FCE8B0;padding:1px 6px;border-radius:5px;}
-
-/* ---------- Header ---------- */
-.site-header{
-  position:sticky;top:0;z-index:40;
-  background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 100%);
-  color:#fff;
-  box-shadow:0 4px 18px rgba(75,47,196,0.25);
-}
-.header-inner{
-  max-width:1180px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 20px;gap:16px;
-}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{font-size:30px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));}
-.logo-text{display:flex;flex-direction:column;line-height:1.1;}
-.logo-title{font-family:var(--font-head);font-weight:800;font-size:24px;letter-spacing:0.3px;}
-.logo-sub{font-size:12px;opacity:0.85;font-weight:600;}
-.header-actions{display:flex;align-items:center;gap:6px;}
-.icon-btn{
-  background:rgba(255,255,255,0.14);border:none;color:#fff;
-  width:38px;height:38px;border-radius:12px;font-size:16px;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .15s ease, transform .15s ease;
-}
-.icon-btn:hover{background:rgba(255,255,255,0.26);transform:translateY(-1px);}
-.admin-pill{
-  background:var(--yellow);color:var(--ink);font-weight:800;font-size:12px;
-  padding:7px 12px;border-radius:999px;white-space:nowrap;
-}
-.search-bar{max-width:1180px;margin:0 auto;padding:0 20px 14px;}
-.search-bar input{
-  width:100%;padding:11px 16px;border-radius:999px;border:none;
-  background:rgba(255,255,255,0.16);color:#fff;font-size:14px;outline:none;
-}
-.search-bar input::placeholder{color:rgba(255,255,255,0.75);}
-
-/* ---------- Admin toolbar ---------- */
-.admin-toolbar{
-  background:var(--yellow);
-}
-.admin-toolbar-inner{
-  max-width:1180px;margin:0 auto;padding:10px 20px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  font-weight:700;font-size:13px;color:#4A3200;
-}
-.admin-toolbar-buttons{display:flex;gap:8px;}
-
-/* ---------- Buttons ---------- */
-.btn{
-  border:none;border-radius:12px;padding:10px 18px;font-weight:700;font-size:14px;
-  transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-}
-.btn:active{transform:scale(0.97);}
-.btn-primary{background:var(--purple);color:#fff;box-shadow:0 6px 16px rgba(108,77,240,0.35);}
-.btn-primary:hover{background:var(--purple-dark);}
-.btn-light{background:#fff;color:var(--ink);border:1.5px solid var(--border);}
-.btn-light:hover{border-color:var(--purple);}
-.btn-ghost{background:transparent;color:var(--ink-soft);}
-.btn-ghost:hover{color:var(--ink);}
-.btn-danger{background:#FDE8E8;color:#C13333;}
-.btn-danger:hover{background:#FBD3D3;}
-.btn-sm{padding:7px 13px;font-size:13px;border-radius:10px;}
-.link-btn{background:none;border:none;color:var(--purple);font-weight:700;font-size:14px;}
-
-/* ---------- Hero ---------- */
-.hero{
-  background:radial-gradient(circle at 20% 20%, rgba(255,201,60,0.35), transparent 45%),
-             radial-gradient(circle at 85% 30%, rgba(34,184,163,0.28), transparent 50%),
-             linear-gradient(180deg,#EFEBFF 0%, var(--bg) 100%);
-  padding:44px 20px 30px;
-  text-align:center;
-}
-.hero-inner{max-width:720px;margin:0 auto;}
-.hero h1{
-  font-family:var(--font-head);font-size:38px;font-weight:800;margin:0 0 8px;
-  color:var(--ink);
-}
-.hero p{margin:0;color:var(--ink-soft);font-size:16px;font-weight:600;}
-
-/* ---------- Category nav ---------- */
-.category-nav{
-  max-width:1180px;margin:0 auto;padding:18px 20px 4px;
-  display:flex;gap:9px;flex-wrap:wrap;
-}
-.cat-pill{
-  background:#fff;border:1.5px solid var(--border);color:var(--ink-soft);
-  padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;
-  transition:all .15s ease;
-}
-.cat-pill:hover{border-color:var(--purple);color:var(--purple);}
-.cat-pill.active{background:var(--purple);border-color:var(--purple);color:#fff;}
-.cat-pill .cat-del{margin-left:6px;opacity:0.6;}
-
-/* ---------- Content grid ---------- */
-.content-wrap{max-width:1180px;margin:0 auto;padding:10px 20px 40px;}
-.section-heading{
-  display:flex;align-items:center;justify-content:space-between;
-  margin:18px 0 16px;
-}
-.section-heading h2{font-family:var(--font-head);font-size:22px;margin:0;}
-.loading-msg,.empty-msg{color:var(--ink-soft);padding:40px 0;text-align:center;font-weight:600;}
-
-.grid{
-  display:grid;grid-template-columns:repeat(auto-fill, minmax(260px,1fr));gap:20px;
-}
-.card{
-  background:var(--card-bg);border-radius:var(--radius-lg);overflow:hidden;
-  box-shadow:var(--shadow-card);border:1px solid var(--border);
-  display:flex;flex-direction:column;cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease;
-  position:relative;
-}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(76,49,196,0.16);}
-.card-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--purple-light);}
-.card-media img{width:100%;height:100%;object-fit:cover;}
-.card-type-badge{
-  position:absolute;top:10px;left:10px;background:rgba(35,28,61,0.75);color:#fff;
-  font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px;
-  display:flex;align-items:center;gap:4px;
-}
-.card-cat-badge{
-  position:absolute;top:10px;right:10px;color:#fff;font-size:11px;font-weight:800;
-  padding:5px 10px;border-radius:999px;
-}
-.card-body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1;}
-.card-title{font-family:var(--font-head);font-size:17px;font-weight:700;line-height:1.25;}
-.card-summary{font-size:13.5px;color:var(--ink-soft);line-height:1.4;flex:1;}
-.card-meta{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:var(--ink-soft);font-weight:700;
-  border-top:1px dashed var(--border);padding-top:8px;margin-top:2px;
-}
-.card-admin-actions{
-  position:absolute;bottom:10px;right:10px;display:flex;gap:6px;z-index:2;
-}
-.card-admin-actions button{
-  background:rgba(255,255,255,0.95);border:none;border-radius:8px;width:30px;height:30px;
-  font-size:14px;box-shadow:0 3px 8px rgba(0,0,0,0.15);
-}
-
-/* ---------- Footer ---------- */
-.site-footer{
-  text-align:center;padding:30px 20px 40px;color:var(--ink-soft);
-  font-size:13px;border-top:1px solid var(--border);margin-top:20px;
-}
-.site-footer strong{color:var(--ink);}
-.footer-fine{margin-top:4px;opacity:0.8;}
-
-/* ---------- Toast ---------- */
-.toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;
-  font-weight:700;font-size:14px;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  max-width:90vw;text-align:center;
-}
-
-/* ================= STRIP READER ================= */
-.strip-reader{
-  position:fixed;inset:0;background:#0D0A17;z-index:150;
-  display:flex;flex-direction:column;color:#fff;
-}
-.reader-top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 16px;gap:10px;
-}
-.reader-close{
-  background:rgba(255,255,255,0.12);border:none;color:#fff;
-  width:36px;height:36px;border-radius:10px;font-size:16px;flex-shrink:0;
-}
-.reader-title{
-  font-family:var(--font-head);font-weight:700;font-size:15px;
-  flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px;
-}
-.reader-counter{font-size:13px;font-weight:700;opacity:0.8;flex-shrink:0;min-width:44px;text-align:right;}
-.reader-progress{display:flex;gap:4px;padding:0 16px 10px;}
-.reader-progress .seg{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,0.18);overflow:hidden;}
-.reader-progress .seg.done{background:var(--yellow);}
-.reader-stage{
-  flex:1;display:flex;align-items:center;justify-content:center;position:relative;
-  overflow:hidden;padding:6px 0;
-}
-.panel-frame{
-  height:100%;max-height:100%;aspect-ratio:9/16;max-width:100%;
-  display:flex;align-items:center;justify-content:center;
-  background:#171225;border-radius:14px;overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,0.5);
-}
-.panel-frame img{width:100%;height:100%;object-fit:contain;background:#171225;user-select:none;}
-.reader-nav{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(255,255,255,0.1);border:none;color:#fff;
-  width:44px;height:64px;font-size:26px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;z-index:5;
-}
-.reader-nav-left{left:8px;}
-.reader-nav-right{right:8px;}
-.reader-nav:hover{background:rgba(255,255,255,0.22);}
-.reader-hint{text-align:center;font-size:12px;opacity:0.55;padding:10px 0 18px;}
-
-/* ================= STORY READER ================= */
-.story-reader{
-  position:fixed;inset:0;background:rgba(20,15,35,0.55);z-index:150;
-  overflow-y:auto;padding:30px 16px 60px;
-}
-.story-reader-inner{
-  max-width:720px;margin:0 auto;background:#fff;border-radius:var(--radius-lg);
-  padding:0 0 30px;box-shadow:var(--shadow-pop);position:relative;
-}
-.story-close{position:sticky;top:14px;margin-left:calc(100% - 50px);background:rgba(35,28,61,0.65);color:#fff;z-index:5;}
-#storyContent{padding:0 28px;}
-.story-cover{width:calc(100% + 56px);margin:0 -28px 20px;border-radius:0;aspect-ratio:16/9;object-fit:cover;}
-.story-cat{
-  display:inline-block;color:#fff;font-weight:800;font-size:11.5px;
-  padding:5px 12px;border-radius:999px;margin-bottom:12px;
-}
-.story-title{font-family:var(--font-head);font-size:28px;font-weight:800;margin:0 0 8px;line-height:1.2;}
-.story-meta{color:var(--ink-soft);font-weight:700;font-size:13px;margin-bottom:22px;}
-.story-block-text{font-size:16px;line-height:1.7;color:#2C2640;margin:0 0 20px;}
-.story-block-image{margin:0 0 20px;}
-.story-block-image img{border-radius:var(--radius-md);width:100%;object-fit:cover;}
-.story-block-caption{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:6px;font-weight:600;}
-.story-gallery-heading{font-family:var(--font-head);font-size:18px;margin:28px 0 12px;font-weight:700;}
-.story-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
-.story-gallery img{aspect-ratio:1/1;object-fit:cover;border-radius:10px;cursor:zoom-in;transition:transform .15s ease;}
-.story-gallery img:hover{transform:scale(1.04);}
-
-/* ================= LIGHTBOX ================= */
-.lightbox{
-  position:fixed;inset:0;background:rgba(10,8,20,0.9);z-index:170;
-  display:flex;align-items:center;justify-content:center;padding:30px;
-}
-.lightbox img{max-width:100%;max-height:100%;border-radius:10px;}
-.lightbox .reader-close{position:absolute;top:16px;right:16px;}
-
-/* ================= MODALS ================= */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(20,15,35,0.55);z-index:160;
-  display:flex;align-items:center;justify-content:center;padding:16px;
-}
-.modal{
-  background:#fff;border-radius:var(--radius-lg);width:100%;max-width:640px;
-  max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shadow-pop);
-}
-.modal-small{max-width:420px;}
-.modal-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 22px;border-bottom:1px solid var(--border);
-}
-.modal-header h3{margin:0;font-family:var(--font-head);font-size:20px;}
-.modal-x{background:var(--purple-light);border:none;width:32px;height:32px;border-radius:9px;font-size:14px;color:var(--ink);}
-.modal-body{padding:20px 22px;overflow-y:auto;}
-.modal-footer{
-  padding:16px 22px;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-}
-.modal-footer-right{display:flex;gap:10px;margin-left:auto;}
-
-.form-field{margin-bottom:16px;display:flex;flex-direction:column;gap:6px;}
-.form-field label{font-weight:800;font-size:13px;color:var(--ink);}
-.form-field input[type=text],.form-field input[type=password],.form-field textarea,.form-field select{
-  border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;
-  outline:none;background:#FBFAFF;color:var(--ink);
-}
-.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--purple);}
-.field-hint{font-size:12px;color:var(--ink-soft);font-weight:600;}
-.field-hint code{background:var(--purple-light);padding:1px 5px;border-radius:5px;}
-.form-row.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
-.type-toggle{display:flex;gap:10px;margin-bottom:20px;}
-.type-btn{
-  flex:1;padding:14px;border-radius:14px;border:2px solid var(--border);background:#fff;
-  font-weight:800;font-size:14px;color:var(--ink-soft);
-}
-.type-btn.active{border-color:var(--purple);background:var(--purple-light);color:var(--purple-dark);}
-
-.dynamic-list{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
-.dyn-item{
-  display:flex;gap:8px;align-items:flex-start;background:#FAF9FE;border:1px solid var(--border);
-  border-radius:12px;padding:10px;
-}
-.dyn-item .dyn-fields{flex:1;display:flex;flex-direction:column;gap:6px;}
-.dyn-item input,.dyn-item textarea,.dyn-item select{width:100%;}
-.dyn-thumb{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--purple-light);flex-shrink:0;}
-.dyn-remove{
-  background:#FDE8E8;border:none;color:#C13333;width:28px;height:28px;border-radius:8px;font-size:13px;flex-shrink:0;
-}
-.dyn-drag-handles{display:flex;flex-direction:column;gap:2px;flex-shrink:0;}
-.dyn-order-btn{background:var(--purple-light);border:none;width:22px;height:20px;border-radius:5px;font-size:10px;color:var(--purple-dark);}
-.dyn-row-inline{display:flex;gap:8px;}
-.dyn-row-inline select{max-width:110px;}
-.add-content-buttons{display:flex;gap:8px;flex-wrap:wrap;}
-
-.settings-section{padding:16px 0;border-bottom:1px solid var(--border);}
-.settings-section:last-child{border-bottom:none;}
-.settings-section h4{margin:0 0 6px;font-family:var(--font-head);font-size:16px;}
-.settings-buttons{display:flex;gap:10px;margin-top:6px;}
-.gh-status{margin-top:10px;font-size:13px;font-weight:700;min-height:18px;}
-.gh-status.ok{color:#1E8A5F;}
-.gh-status.err{color:#C13333;}
-
-.category-manage-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
-.category-manage-item{
-  display:flex;align-items:center;gap:6px;background:var(--purple-light);color:var(--purple-dark);
-  padding:7px 10px 7px 14px;border-radius:999px;font-weight:700;font-size:13px;
-}
-.category-manage-item button{background:none;border:none;color:#C13333;font-size:13px;font-weight:800;}
-.add-category-row{display:flex;gap:8px;}
-.add-category-row input{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;outline:none;}
-
-@media (max-width:640px){
-  .form-row.two-col{grid-template-columns:1fr;}
-  .hero h1{font-size:29px;}
-  .logo-sub{display:none;}
-  .story-close{margin-left:calc(100% - 46px);}
-  #storyContent{padding:0 18px;}
-  .story-cover{width:calc(100% + 36px);margin:0 -18px 18px;}
-}
-
+.strip-reader{position:fixed;inset:0;background:#0D0A17;z-index:150;display:flex;flex-direction:column;color:#fff}.reader-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:10px}
+.reader-close{background:rgba(255,255,255,.12);border:0;color:#fff;width:36px;height:36px;border-radius:10px;font-size:16px}.reader-title{font-family:var(--font-head);font-weight:700;font-size:15px;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reader-counter{font-size:13px;font-weight:700;opacity:.8;min-width:44px;text-align:right}.reader-progress{display:flex;gap:4px;padding:0 16px 10px}.reader-progress .seg{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.18);cursor:pointer}.reader-progress .seg.done{background:var(--yellow)}
+.reader-stage{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6px 0}.panel-frame{height:100%;max-height:100%;aspect-ratio:9/16;max-width:100%;display:flex;background:#171225;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.panel-frame img{width:100%;height:100%;object-fit:contain}.reader-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:0;color:#fff;width:44px;height:64px;font-size:26px;border-radius:12px;z-index:5}.reader-nav-left{left:8px}.reader-nav-right{right:8px}.reader-hint{text-align:center;font-size:12px;opacity:.55;padding:10px 0 18px}
+.story-reader{position:fixed;inset:0;background:rgba(20,15,35,.55);z-index:150;overflow-y:auto;padding:30px 16px 60px}.story-reader-inner{max-width:720px;margin:auto;background:#fff;border-radius:var(--radius-lg);padding:0 0 30px;box-shadow:var(--shadow-pop);position:relative}
+.story-close{position:sticky;top:14px;margin-left:calc(100% - 50px);background:rgba(35,28,61,.65);z-index:5}.story-content{padding:0 28px}.story-cover{width:calc(100% + 56px);margin:0 -28px 20px;aspect-ratio:16/9;object-fit:cover}
+.story-cat{display:inline-block;color:#fff;font-weight:800;font-size:11.5px;padding:5px 12px;border-radius:999px;margin-bottom:12px}.story-title{font-family:var(--font-head);font-size:28px;font-weight:800;margin:0 0 8px;line-height:1.2}
+.story-meta{color:var(--ink-soft);font-weight:700;font-size:13px;margin-bottom:22px}.story-block-text{font-size:16px;line-height:1.7;color:#2C2640;margin:0 0 20px}.story-block-image{margin-bottom:20px}.story-block-image img{border-radius:var(--radius-md);width:100%;object-fit:cover}.story-block-caption{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:6px;font-weight:600}
+.story-gallery-heading{font-family:var(--font-head);font-size:18px;margin:28px 0 12px}.story-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}.story-gallery img{aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:zoom-in}
+.lightbox{position:fixed;inset:0;background:rgba(10,8,20,.9);z-index:170;display:flex;align-items:center;justify-content:center;padding:30px}.lightbox img{max-width:100%;max-height:100%;border-radius:10px}.lightbox .reader-close{position:absolute;top:16px;right:16px}
+.modal-overlay{position:fixed;inset:0;background:rgba(20,15,35,.55);z-index:160;display:flex;align-items:center;justify-content:center;padding:16px}.modal{background:#fff;border-radius:var(--radius-lg);width:100%;max-width:640px;max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shadow-pop)}.modal-small{max-width:420px}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border)}.modal-header h3{margin:0;font-family:var(--font-head);font-size:20px}.modal-x{background:var(--purple-light);border:0;width:32px;height:32px;border-radius:9px}
+.modal-body{padding:20px 22px;overflow-y:auto}.modal-footer{padding:16px 22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.form-field{margin-bottom:16px;display:flex;flex-direction:column;gap:6px}.form-field label{font-weight:800;font-size:13px}.form-field input,.form-field textarea,.form-field select{border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;outline:0;background:#FBFAFF;color:var(--ink)}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--purple)}.field-hint{font-size:12px;color:var(--ink-soft);font-weight:600}.field-hint code{background:var(--purple-light);padding:1px 5px;border-radius:5px}
+.form-row.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.type-toggle{display:flex;gap:10px;margin-bottom:20px}.type-btn{flex:1;padding:14px;border-radius:14px;border:2px solid var(--border);background:#fff;font-weight:800;color:var(--ink-soft)}.type-btn.active{border-color:var(--purple);background:var(--purple-light);color:var(--purple-dark)}
+.dynamic-list{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}.dyn-item{display:flex;gap:8px;align-items:flex-start;background:#FAF9FE;border:1px solid var(--border);border-radius:12px;padding:10px}.dyn-fields{flex:1;display:flex;flex-direction:column;gap:6px}.dyn-item input,.dyn-item textarea,.dyn-item select{width:100%}.dyn-thumb{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--purple-light);flex-shrink:0}.dyn-remove{background:#FDE8E8;border:0;color:#C13333;width:28px;height:28px;border-radius:8px}.dyn-drag-handles{display:flex;flex-direction:column;gap:2px}.dyn-order-btn{background:var(--purple-light);border:0;width:22px;height:20px;border-radius:5px;font-size:10px;color:var(--purple-dark)}
+.dyn-row-inline{display:flex;gap:8px}.dyn-row-inline select{max-width:140px}.settings-section{padding:16px 0;border-bottom:1px solid var(--border)}.settings-section:last-child{border-bottom:0}.settings-section h4{margin:0 0 6px;font-family:var(--font-head);font-size:16px}.gh-status{margin-top:10px;font-size:13px;font-weight:700;min-height:18px}.gh-status.ok{color:#1E8A5F}.gh-status.err{color:#C13333}
+.category-manage-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.category-manage-item{display:flex;align-items:center;gap:6px;background:var(--purple-light);color:var(--purple-dark);padding:7px 10px 7px 14px;border-radius:999px;font-weight:700;font-size:13px}.category-manage-item button{background:0;border:0;color:#C13333;font-weight:800}.add-category-row{display:flex;gap:8px}.add-category-row input{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;outline:0}
+@media(max-width:640px){.form-row.two-col{grid-template-columns:1fr}.hero h1{font-size:29px}.logo-sub{display:none}.story-content{padding:0 18px}.story-cover{width:calc(100% + 36px);margin-left:-18px}.reader-nav{width:38px;height:54px}}
 </style>
 </head>
 <body>
@@ -384,1292 +81,323 @@ input,select,textarea{font-family:inherit;}
 <div id="toast" class="toast" hidden></div>
 
 <div class="file-warning" id="fileWarning" hidden>
-  ⚠️ Stran je odprta neposredno iz datoteke, zato prikazuje vgrajene vzorčne članke, ne trenutnega <code>articles.json</code>.
-  Za pravo delovanje objavi mapo na <strong>GitHub Pages</strong>, ali datoteke zaženi prek lokalnega strežnika
-  (npr. <code>python3 -m http.server</code>) — glej README.
+⚠️ Stran je odprta neposredno iz datoteke. V tem načinu brskalnik ne more zanesljivo prebrati <code>articles.json</code>.
+Za pravo uporabo odpri stran prek strežnika, npr. <code>python3 -m http.server</code>, ali jo objavi na GitHub Pages.
 </div>
 
 <header class="site-header">
   <div class="header-inner">
     <a href="#/" class="logo" id="logoLink">
       <span class="logo-icon">🔎</span>
-      <span class="logo-text">
-        <span class="logo-title" id="siteTitleText">Radovedni</span>
-        <span class="logo-sub" id="siteSubtitleText">Stripi &amp; zgodbe za radovedne glave</span>
-      </span>
+      <span class="logo-text"><span class="logo-title" id="siteTitleText">Radovedni</span><span class="logo-sub" id="siteSubtitleText">Stripi &amp; zgodbe za radovedne glave</span></span>
     </a>
-
     <div class="header-actions">
-      <button class="icon-btn" id="searchToggleBtn" title="Iskanje" aria-label="Iskanje">🔍</button>
-      <button class="icon-btn" id="loginBtn" title="Uredniški dostop" aria-label="Prijava">🔑</button>
-      <button class="icon-btn" id="settingsBtn" title="Nastavitve" aria-label="Nastavitve" hidden>⚙️</button>
+      <button class="icon-btn" id="searchToggleBtn" title="Iskanje">🔍</button>
+      <button class="icon-btn" id="loginBtn" title="Uredniški dostop">🔑</button>
+      <button class="icon-btn" id="settingsBtn" title="Nastavitve" hidden>⚙️</button>
       <span class="admin-pill" id="adminPill" hidden>✦ Urednik</span>
       <button class="btn btn-ghost" id="logoutBtn" hidden>Odjava</button>
     </div>
   </div>
-  <div class="search-bar" id="searchBar" hidden>
-    <input type="text" id="searchInput" placeholder="Išči članke, stripe, zgodbe ...">
-  </div>
+  <div class="search-bar" id="searchBar" hidden><input id="searchInput" type="text" placeholder="Išči članke, stripe, zgodbe ..."></div>
 </header>
 
 <div class="admin-toolbar" id="adminToolbar" hidden>
   <div class="admin-toolbar-inner">
     <span>✦ Uredniški način — spremembe lahko objaviš neposredno na GitHub</span>
-    <div class="admin-toolbar-buttons">
-      <button class="btn btn-light" id="openSettingsBtn2">Nastavitve</button>
-      <button class="btn btn-primary" id="newArticleBtn">+ Nov članek</button>
-    </div>
+    <div class="admin-toolbar-buttons"><button class="btn btn-light" id="openSettingsBtn2">Nastavitve</button><button class="btn btn-primary" id="newArticleBtn">+ Nov članek</button></div>
   </div>
 </div>
 
-<section class="hero">
-  <div class="hero-inner">
-    <h1 id="heroTitle">Radovedni</h1>
-    <p id="heroSubtitle">Stripi, ilustracije in zgodbe za radovedne glave — beri, uči se, uživaj.</p>
-  </div>
-</section>
-
-<nav class="category-nav" id="categoryNav">
-  <button class="cat-pill active" data-cat="__vse__">Vse</button>
-</nav>
+<section class="hero"><div class="hero-inner"><h1 id="heroTitle">Radovedni</h1><p id="heroSubtitle">Stripi, ilustracije in zgodbe za radovedne glave — beri, uči se, uživaj.</p></div></section>
+<nav class="category-nav" id="categoryNav"><button class="cat-pill active" data-cat="__vse__">Vse</button></nav>
 
 <main class="content-wrap">
-  <div class="section-heading">
-    <h2 id="sectionHeadingText">Najnovejše</h2>
-    <button class="link-btn" id="refreshBtn">↺ Osveži</button>
-  </div>
-  <div class="grid" id="grid">
-    <div class="loading-msg">Nalaganje člankov…</div>
-  </div>
+  <div class="section-heading"><h2 id="sectionHeadingText">Najnovejše</h2><button class="link-btn" id="refreshBtn">↺ Osveži</button></div>
+  <div class="grid" id="grid"><div class="loading-msg">Nalaganje člankov…</div></div>
   <div class="empty-msg" id="emptyMsg" hidden>Ni najdenih člankov v tej rubriki.</div>
 </main>
 
-<footer class="site-footer">
-  <p><strong>Radovedni</strong> · Revija za radovedne glave · izobraževanje in zabava</p>
-  <p class="footer-fine">Narejeno z ♥ za mlade raziskovalce · © <span id="footerYear"></span></p>
-</footer>
+<footer class="site-footer"><p><strong>Radovedni</strong> · Revija za radovedne glave · izobraževanje in zabava</p><p>Narejeno z ♥ za mlade raziskovalce · © <span id="footerYear"></span></p></footer>
 
-<!-- ============ STRIP READER (9:16 panel viewer) ============ -->
 <div class="strip-reader" id="stripReader" hidden>
-  <div class="reader-top">
-    <button class="reader-close" id="stripCloseBtn" aria-label="Zapri">✕</button>
-    <div class="reader-title" id="stripReaderTitle">Naslov stripa</div>
-    <div class="reader-counter" id="stripCounter">1 / 1</div>
-  </div>
+  <div class="reader-top"><button class="reader-close" id="stripCloseBtn">✕</button><div class="reader-title" id="stripReaderTitle"></div><div class="reader-counter" id="stripCounter">1 / 1</div></div>
   <div class="reader-progress" id="stripProgress"></div>
-  <div class="reader-stage" id="stripStage">
-    <button class="reader-nav reader-nav-left" id="stripPrevBtn" aria-label="Prejšnji panel">‹</button>
-    <div class="panel-frame" id="panelFrame">
-      <img id="panelImage" src="" alt="Panel stripa" draggable="false">
-    </div>
-    <button class="reader-nav reader-nav-right" id="stripNextBtn" aria-label="Naslednji panel">›</button>
-  </div>
+  <div class="reader-stage" id="stripStage"><button class="reader-nav reader-nav-left" id="stripPrevBtn">‹</button><div class="panel-frame"><img id="panelImage" src="" alt="Panel stripa"></div><button class="reader-nav reader-nav-right" id="stripNextBtn">›</button></div>
   <div class="reader-hint">Tapni levo/desno ali podrsaj za naslednji panel</div>
 </div>
 
-<!-- ============ STORY READER (zgodba) ============ -->
-<div class="story-reader" id="storyReader" hidden>
-  <div class="story-reader-inner">
-    <button class="reader-close story-close" id="storyCloseBtn" aria-label="Zapri">✕</button>
-    <div id="storyContent"></div>
-  </div>
-</div>
+<div class="story-reader" id="storyReader" hidden><div class="story-reader-inner"><button class="reader-close story-close" id="storyCloseBtn">✕</button><div class="story-content" id="storyContent"></div></div></div>
+<div class="lightbox" id="lightbox" hidden><button class="reader-close" id="lightboxCloseBtn">✕</button><img id="lightboxImage" src="" alt=""></div>
 
-<!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" hidden>
-  <button class="reader-close" id="lightboxCloseBtn" aria-label="Zapri">✕</button>
-  <img id="lightboxImage" src="" alt="">
-</div>
-
-<!-- ============ NEW / EDIT ARTICLE MODAL ============ -->
 <div class="modal-overlay" id="articleModalOverlay" hidden>
-  <div class="modal" id="articleModal">
-    <div class="modal-header">
-      <h3 id="articleModalTitle">Nov članek</h3>
-      <button class="modal-x" id="articleModalCloseBtn">✕</button>
+<div class="modal">
+  <div class="modal-header"><h3 id="articleModalTitle">Nov članek</h3><button class="modal-x" id="articleModalCloseBtn">✕</button></div>
+  <div class="modal-body">
+    <div class="type-toggle"><button class="type-btn active" id="typeStripBtn">📱 Strip</button><button class="type-btn" id="typeZgodbaBtn">📖 Zgodba</button></div>
+    <div class="form-row two-col">
+      <div class="form-field"><label>Rubrika *</label><select id="fieldCategory"></select></div>
+      <div class="form-field"><label>Avtor</label><input id="fieldAuthor" type="text" placeholder="npr. Ana K."></div>
     </div>
-    <div class="modal-body">
+    <div class="form-field"><label>Naslov članka *</label><input id="fieldTitle" type="text"></div>
+    <div class="form-field"><label>Kratki povzetek</label><textarea id="fieldSummary" rows="2"></textarea></div>
+    <div class="form-field"><label>URL naslovne slike</label><input id="fieldCover" type="text" placeholder="https://..."></div>
 
-      <div class="type-toggle">
-        <button class="type-btn active" data-type="strip" id="typeStripBtn">📱 Strip (paneli 9:16)</button>
-        <button class="type-btn" data-type="zgodba" id="typeZgodbaBtn">📖 Zgodba za branje</button>
-      </div>
+    <div id="panelsSection"><div class="form-field"><label>Paneli stripa</label><span class="field-hint">Vsak panel naj bo ločena slika. Priporočeno 9:16.</span><div id="panelsList" class="dynamic-list"></div><button class="btn btn-light btn-sm" id="addPanelBtn">+ Dodaj panel</button></div></div>
 
-      <div class="form-row two-col">
-        <div class="form-field">
-          <label>Rubrika *</label>
-          <select id="fieldCategory"></select>
-        </div>
-        <div class="form-field">
-          <label>Avtor</label>
-          <input type="text" id="fieldAuthor" placeholder="npr. Ana K.">
-        </div>
-      </div>
-
-      <div class="form-field">
-        <label>Naslov članka *</label>
-        <input type="text" id="fieldTitle" placeholder="Naslov...">
-      </div>
-
-      <div class="form-field">
-        <label>Kratki povzetek</label>
-        <textarea id="fieldSummary" rows="2" placeholder="Kratek opis, ki se prikaže na kartici..."></textarea>
-      </div>
-
-      <div class="form-field">
-        <label>URL naslovne slike</label>
-        <input type="text" id="fieldCover" placeholder="https://...">
-        <span class="field-hint">Priporočeno razmerje 3:2 (npr. 1200 × 800 px)</span>
-      </div>
-
-      <!-- STRIP PANELS -->
-      <div id="panelsSection">
-        <div class="form-field">
-          <label>Paneli stripa (v vrstnem redu branja)</label>
-          <span class="field-hint">Dodaj URL vsakega panela. Priporočen format 9:16 — lepo se prikaže na telefonu.</span>
-          <div id="panelsList" class="dynamic-list"></div>
-          <button class="btn btn-light btn-sm" id="addPanelBtn">+ Dodaj panel</button>
-        </div>
-      </div>
-
-      <!-- ZGODBA CONTENT BLOCKS -->
-      <div id="contentSection" hidden>
-        <div class="form-field">
-          <label>Vsebina zgodbe *</label>
-          <span class="field-hint">Dodajaj odstavke besedila in slike v poljubnem vrstnem redu.</span>
-          <div id="contentList" class="dynamic-list"></div>
-          <div class="add-content-buttons">
-            <button class="btn btn-light btn-sm" id="addTextBlockBtn">+ Odstavek besedila</button>
-            <button class="btn btn-light btn-sm" id="addImageBlockBtn">+ Slika</button>
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Galerija (prikazana pod člankom)</label>
-          <div id="galleryList" class="dynamic-list"></div>
-          <button class="btn btn-light btn-sm" id="addGalleryBtn">+ Dodaj sliko v galerijo</button>
-        </div>
-      </div>
-
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-danger" id="deleteArticleBtn" hidden>Izbriši članek</button>
-      <div class="modal-footer-right">
-        <button class="btn btn-ghost" id="articleCancelBtn">Prekliči</button>
-        <button class="btn btn-primary" id="articleSaveBtn">Objavi članek</button>
-      </div>
+    <div id="contentSection" hidden>
+      <div class="form-field"><label>Vsebina zgodbe</label><div id="contentList" class="dynamic-list"></div><div class="add-content-buttons"><button class="btn btn-light btn-sm" id="addTextBlockBtn">+ Odstavek</button><button class="btn btn-light btn-sm" id="addImageBlockBtn">+ Slika</button></div></div>
+      <div class="form-field"><label>Galerija</label><div id="galleryList" class="dynamic-list"></div><button class="btn btn-light btn-sm" id="addGalleryBtn">+ Dodaj sliko</button></div>
     </div>
   </div>
-</div>
+  <div class="modal-footer"><button class="btn btn-danger" id="deleteArticleBtn" hidden>Izbriši članek</button><div class="modal-footer-right"><button class="btn btn-ghost" id="articleCancelBtn">Prekliči</button><button class="btn btn-primary" id="articleSaveBtn">Objavi članek</button></div></div>
+</div></div>
 
-<!-- ============ SETTINGS MODAL ============ -->
 <div class="modal-overlay" id="settingsModalOverlay" hidden>
-  <div class="modal" id="settingsModal">
-    <div class="modal-header">
-      <h3>Nastavitve uredništva</h3>
-      <button class="modal-x" id="settingsModalCloseBtn">✕</button>
+<div class="modal">
+  <div class="modal-header"><h3>Nastavitve uredništva</h3><button class="modal-x" id="settingsModalCloseBtn">✕</button></div>
+  <div class="modal-body">
+    <div class="settings-section">
+      <h4>GitHub integracija</h4><p class="field-hint">Za javno stran GitHub API ni potreben za običajno branje. Uporablja se samo za uredniško objavljanje.</p>
+      <div class="form-field"><label>GitHub žeton</label><input type="password" id="ghToken" placeholder="ghp_..."><span class="field-hint">Potrebno: Contents Read/Write za ta repozitorij. Žeton se shrani samo lokalno.</span></div>
+      <div class="form-row two-col"><div class="form-field"><label>Lastnik repozitorija</label><input id="ghOwner" type="text"></div><div class="form-field"><label>Ime repozitorija</label><input id="ghRepo" type="text"></div></div>
+      <div class="form-row two-col"><div class="form-field"><label>Veja</label><input id="ghBranch" type="text" value="main"></div><div class="form-field"><label>Pot do articles.json</label><input id="ghPath" type="text" value="articles.json"></div></div>
+      <div class="settings-buttons"><button class="btn btn-light" id="ghTestBtn">Preveri povezavo</button><button class="btn btn-primary" id="ghSaveBtn">Shrani nastavitve</button></div><div class="gh-status" id="ghStatus"></div>
     </div>
-    <div class="modal-body">
-
-      <div class="settings-section">
-        <h4>GitHub integracija</h4>
-        <p class="field-hint">Spremembe se objavijo neposredno v tvoj GitHub repozitorij (datoteka articles.json).</p>
-        <div class="form-field">
-          <label>GitHub žeton (Personal Access Token)</label>
-          <input type="password" id="ghToken" placeholder="ghp_...">
-          <span class="field-hint">Žeton potrebuje dovoljenje <code>repo</code> (fine-grained: Contents – Read/Write). Shrani se samo lokalno v tvojem brskalniku.</span>
-        </div>
-        <div class="form-row two-col">
-          <div class="form-field">
-            <label>Lastnik repozitorija</label>
-            <input type="text" id="ghOwner" placeholder="npr. mojuporabnik">
-          </div>
-          <div class="form-field">
-            <label>Ime repozitorija</label>
-            <input type="text" id="ghRepo" placeholder="npr. radovedni">
-          </div>
-        </div>
-        <div class="form-row two-col">
-          <div class="form-field">
-            <label>Veja (branch)</label>
-            <input type="text" id="ghBranch" placeholder="main" value="main">
-          </div>
-          <div class="form-field">
-            <label>Pot do articles.json</label>
-            <input type="text" id="ghPath" placeholder="articles.json" value="articles.json">
-          </div>
-        </div>
-        <div class="settings-buttons">
-          <button class="btn btn-light" id="ghTestBtn">Preveri povezavo</button>
-          <button class="btn btn-primary" id="ghSaveBtn">Shrani nastavitve</button>
-        </div>
-        <div class="gh-status" id="ghStatus"></div>
-      </div>
-
-      <div class="settings-section">
-        <h4>Rubrike</h4>
-        <div id="categoryManageList" class="category-manage-list"></div>
-        <div class="add-category-row">
-          <input type="text" id="newCategoryInput" placeholder="Ime nove rubrike">
-          <button class="btn btn-light btn-sm" id="addCategoryBtn">Dodaj</button>
-        </div>
-      </div>
-
-      <div class="settings-section">
-        <h4>Naslov revije</h4>
-        <div class="form-field">
-          <label>Ime</label>
-          <input type="text" id="settingsTitleInput" placeholder="Radovedni">
-        </div>
-        <div class="form-field">
-          <label>Podnaslov</label>
-          <input type="text" id="settingsSubtitleInput" placeholder="Podnaslov...">
-        </div>
-        <button class="btn btn-primary btn-sm" id="saveTitleBtn">Shrani</button>
-      </div>
-
-      <div class="settings-section">
-        <h4>Varnostna kopija</h4>
-        <p class="field-hint">Če GitHub ni povezan, lahko articles.json prenesete ročno in ga naložite v repozitorij.</p>
-        <button class="btn btn-light" id="downloadJsonBtn">⬇ Prenesi articles.json</button>
-      </div>
-
-    </div>
-    <div class="modal-footer">
-      <div class="modal-footer-right">
-        <button class="btn btn-ghost" id="settingsCloseBtn2">Zapri</button>
-      </div>
-    </div>
+    <div class="settings-section"><h4>Rubrike</h4><div id="categoryManageList" class="category-manage-list"></div><div class="add-category-row"><input id="newCategoryInput" type="text" placeholder="Ime nove rubrike"><button class="btn btn-light btn-sm" id="addCategoryBtn">Dodaj</button></div></div>
+    <div class="settings-section"><h4>Naslov revije</h4><div class="form-field"><label>Ime</label><input id="settingsTitleInput" type="text"></div><div class="form-field"><label>Podnaslov</label><input id="settingsSubtitleInput" type="text"></div><button class="btn btn-primary btn-sm" id="saveTitleBtn">Shrani</button></div>
+    <div class="settings-section"><h4>Varnostna kopija</h4><button class="btn btn-light" id="downloadJsonBtn">⬇ Prenesi articles.json</button></div>
   </div>
-</div>
+  <div class="modal-footer"><div></div><button class="btn btn-ghost" id="settingsCloseBtn2">Zapri</button></div>
+</div></div>
 
-<!-- ============ LOGIN MODAL ============ -->
 <div class="modal-overlay" id="loginModalOverlay" hidden>
-  <div class="modal modal-small" id="loginModal">
-    <div class="modal-header">
-      <h3>Uredniški dostop</h3>
-      <button class="modal-x" id="loginModalCloseBtn">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-field">
-        <label>Administratorsko geslo</label>
-        <input type="password" id="loginPasswordInput" placeholder="••••••••">
-        <span class="field-hint" id="loginHint">Geslo nastaviš ob prvi prijavi.</span>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div class="modal-footer-right">
-        <button class="btn btn-ghost" id="loginCancelBtn">Prekliči</button>
-        <button class="btn btn-primary" id="loginSubmitBtn">Prijava</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="modal modal-small">
+  <div class="modal-header"><h3>Uredniški dostop</h3><button class="modal-x" id="loginModalCloseBtn">✕</button></div>
+  <div class="modal-body"><div class="form-field"><label>Administratorsko geslo</label><input id="loginPasswordInput" type="password"><span class="field-hint" id="loginHint"></span></div></div>
+  <div class="modal-footer"><div></div><div class="modal-footer-right"><button class="btn btn-ghost" id="loginCancelBtn">Prekliči</button><button class="btn btn-primary" id="loginSubmitBtn">Prijava</button></div></div>
+</div></div>
 
-<!-- ============ DELETE CONFIRM MODAL ============ -->
 <div class="modal-overlay" id="deleteModalOverlay" hidden>
-  <div class="modal modal-small" id="deleteModal">
-    <div class="modal-header">
-      <h3>Potrditev brisanja</h3>
-      <button class="modal-x" id="deleteModalCloseBtn">✕</button>
-    </div>
-    <div class="modal-body">
-      <p>Ali ste prepričani, da želite izbrisati ta članek? Tega dejanja ni mogoče razveljaviti.</p>
-    </div>
-    <div class="modal-footer">
-      <div class="modal-footer-right">
-        <button class="btn btn-ghost" id="deleteCancelBtn">Prekliči</button>
-        <button class="btn btn-danger" id="deleteConfirmBtn">Izbriši</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="modal modal-small">
+  <div class="modal-header"><h3>Potrditev brisanja</h3><button class="modal-x" id="deleteModalCloseBtn">✕</button></div>
+  <div class="modal-body"><p>Ali ste prepričani, da želite izbrisati ta članek? Tega dejanja ni mogoče razveljaviti.</p></div>
+  <div class="modal-footer"><div></div><div class="modal-footer-right"><button class="btn btn-ghost" id="deleteCancelBtn">Prekliči</button><button class="btn btn-danger" id="deleteConfirmBtn">Izbriši</button></div></div>
+</div></div>
 
 <script>
-/* ============================================================
-   RADOVEDNI — revija stripov, ilustracij in zgodb
-   Vanilla JS, brez odvisnosti. Deluje na GitHub Pages.
-   ============================================================ */
-
-(function(){
 "use strict";
-
-/* Vgrajena rezervna kopija podatkov — uporabi se, če fetch("articles.json")
-   ni mogoč (npr. stran odprta neposredno z dvoklikom kot file://).
-   Ta blok se pri združevanju v eno index.html datoteko samodejno
-   napolni z vsebino articles.json — glej build/merge skripto. */
-window.EMBEDDED_DATA = {
-  "settings": {
-    "title": "Radovedni",
-    "subtitle": "Stripi, ilustracije in zgodbe za radovedne glave",
-    "description": "Radovedni je izobraževalna in razvedrilna revija za mlade in osnovnošolce — polna stripov, ilustriranih zgodb in zanimivosti iz sveta znanosti.",
-    "categories": [
-      "Matematika",
-      "Fizika",
-      "Kemija",
-      "Biologija",
-      "Geografija",
-      "Zgodovina",
-      "Slovenščina",
-      "Razvedrilo"
-    ]
-  },
-  "articles": [
-    {
-      "id": "dobrodoslica-2026",
-      "type": "zgodba",
-      "category": "Razvedrilo",
-      "title": "Dobrodošli v Radovednih!",
-      "author": "Uredništvo",
-      "summary": "Prva stran nove revije, ki bo polnila vaše popoldneve s stripi, zgodbami in znanostjo.",
-      "coverImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80",
-      "date": "2026-09-01",
-      "content": [
-        {
-          "type": "text",
-          "value": "Pozdravljeni, radovedneži! Pred vami je prva številka revije Radovedni — mesta, kjer se znanost, domišljija in dobra zabava srečajo na eni strani."
-        },
-        {
-          "type": "text",
-          "value": "Tukaj boste našli stripe, ki jih lahko berete kar na telefonu, panel za panelom, ter zgodbe polne ilustracij. Vsak teden bomo dodali kaj novega iz matematike, fizike, kemije, biologije, geografije, zgodovine in seveda razvedrila."
-        },
-        {
-          "type": "image",
-          "url": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",
-          "caption": "Naša uredniška ekipa v akciji."
-        },
-        {
-          "type": "text",
-          "value": "Če imaš idejo za strip ali zgodbo, nam jo pošlji — morda bo prav tvoja ideja naslednja objavljena stran!"
-        }
-      ],
-      "gallery": [
-        "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"
-      ]
-    },
-    {
-      "id": "strip-vesoljski-poskus",
-      "type": "strip",
-      "category": "Fizika",
-      "title": "Vesoljski poskus",
-      "author": "Ana K.",
-      "summary": "Kratek strip o tem, kaj se zgodi s kapljico vode v breztežnostnem stanju.",
-      "coverImage": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&q=80",
-      "date": "2026-09-03",
-      "panels": [
-        {
-          "url": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=900&q=80",
-          "format": "9:16"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=900&q=80",
-          "format": "9:16"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=900&q=80",
-          "format": "9:16"
-        }
-      ]
-    }
+(() => {
+const EMBEDDED_DATA = {
+  settings:{title:"Radovedni",subtitle:"Stripi & zgodbe za radovedne glave",description:"Stripi, ilustracije in zgodbe za radovedne glave.",categories:["Matematika","Fizika","Kemija","Biologija","Geografija","Zgodovina","Slovenščina","Razvedrilo"]},
+  articles:[
+    {id:"dobrodoslica-2026",type:"zgodba",category:"Razvedrilo",title:"Dobrodošli v Radovednih!",author:"Uredništvo",summary:"Prva stran nove revije, ki bo polnila vaše popoldneve s stripi, zgodbami in znanostjo.",coverImage:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80",date:"2026-09-01",content:[
+      {type:"text",value:"Pozdravljeni, radovedneži! Pred vami je prva številka revije Radovedni — mesta, kjer se znanost, domišljija in dobra zabava srečajo na eni strani."},
+      {type:"text",value:"Tukaj boste našli stripe, ki jih lahko berete kar na telefonu, panel za panelom, ter zgodbe polne ilustracij."},
+      {type:"image",url:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",caption:"Naša uredniška ekipa v akciji."}
+    ],gallery:["https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80","https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"]},
+    {id:"strip-vesoljski-poskus",type:"strip",category:"Fizika",title:"Vesoljski poskus",author:"Ana K.",summary:"Kratek strip o tem, kaj se zgodi s kapljico vode v breztežnostnem stanju.",coverImage:"https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1200&q=80",date:"2026-09-03",panels:[
+      {url:"https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=900&q=80",format:"9:16"},
+      {url:"https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=900&q=80",format:"9:16"},
+      {url:"https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=900&q=80",format:"9:16"}
+    ]}
   ]
 };
 
-/* ---------- Barve rubrik (ciklično) ---------- */
-const CAT_COLORS = ["#6C4DF0","#FF8A3D","#22B8A3","#F2568C","#3D9DFF","#F0A93C","#7BC142","#B14DF0","#4DB6AC","#E0525C"];
-function catColor(cat){
-  const cats = state.data.settings.categories;
-  const idx = cats.indexOf(cat);
-  return CAT_COLORS[(idx<0?0:idx) % CAT_COLORS.length];
-}
+const CAT_COLORS=["#6C4DF0","#FF8A3D","#22B8A3","#F2568C","#3D9DFF","#F0A93C","#7BC142","#B14DF0","#4DB6AC","#E0525C"];
+const state={data:structuredClone(EMBEDDED_DATA),sha:null,activeCategory:"__vse__",searchTerm:"",isAdmin:false,editingId:null,currentType:"strip",panelDraft:[],contentDraft:[],galleryDraft:[],currentStrip:null,currentPanelIndex:0,pendingDeleteId:null,config:loadConfig()};
 
-/* ---------- Stanje aplikacije ---------- */
-const state = {
-  data: { settings:{ title:"Radovedni", subtitle:"", description:"", categories:[] }, articles:[] },
-  sha: null, // github file sha za posodabljanje
-  activeCategory: "__vse__",
-  searchTerm: "",
-  isAdmin: false,
-  editingId: null, // id članka ki se ureja, ali null za nov
-  currentType: "strip",
-  panelDraft: [],
-  contentDraft: [],
-  galleryDraft: [],
-  currentStrip: null,
-  currentPanelIndex: 0,
-  pendingDeleteId: null,
-  config: loadConfig()
-};
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+function loadConfig(){try{return JSON.parse(localStorage.getItem("radovedni_config")||"{}")}catch{return {}}}
+function saveConfig(){localStorage.setItem("radovedni_config",JSON.stringify(state.config))}
+function toast(msg,ms=3000){const e=$("#toast");e.textContent=msg;e.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>e.hidden=true,ms)}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function uid(){return "a"+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function slugify(s){return (s||"clanek").toLowerCase().replace(/[čć]/g,"c").replace(/š/g,"s").replace(/ž/g,"z").replace(/đ/g,"dj").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").slice(0,50)||"clanek"}
+function catColor(cat){const i=(state.data.settings.categories||[]).indexOf(cat);return CAT_COLORS[(i<0?0:i)%CAT_COLORS.length]}
+function formatDate(s){if(!s)return "";const d=new Date(s+"T00:00:00");return isNaN(d)?s:d.toLocaleDateString("sl-SI",{day:"numeric",month:"short",year:"numeric"})}
+function isFile(){return location.protocol==="file:"}
 
-function loadConfig(){
-  try{
-    const raw = localStorage.getItem("radovedni_config");
-    return raw ? JSON.parse(raw) : {};
-  }catch(e){ return {}; }
+async function fetchJsonFile(){
+  const r=await fetch("./articles.json?_"+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  return r.json();
 }
-function saveConfig(){
-  localStorage.setItem("radovedni_config", JSON.stringify(state.config));
-}
-
-/* ---------- Pomožne DOM funkcije ---------- */
-const $ = (sel)=>document.querySelector(sel);
-const $$ = (sel)=>Array.from(document.querySelectorAll(sel));
-
-function toast(msg, ms){
-  const el = $("#toast");
-  el.textContent = msg;
-  el.hidden = false;
-  clearTimeout(toast._t);
-  toast._t = setTimeout(()=>{ el.hidden = true; }, ms||2600);
-}
-
-function escapeHtml(str){
-  return String(str==null?"":str).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function uid(){
-  return "a" + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
-}
-function slugify(str){
-  return (str||"clanek").toLowerCase()
-    .replace(/[čć]/g,"c").replace(/š/g,"s").replace(/ž/g,"z").replace(/đ/g,"dj")
-    .replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").slice(0,50) || "clanek";
-}
-
-/* ============================================================
-   NALAGANJE PODATKOV
-   ============================================================
-   Stran poskuša najprej prebrati sveži articles.json (prek GitHub
-   API-ja ali z navadnim fetch). Če to ni mogoče (npr. datoteka je
-   odprta neposredno z dvoklikom kot file:// in brskalnik zavrne
-   fetch do druge lokalne datoteke), se uporabi vgrajena rezervna
-   kopija podatkov (EMBEDDED_DATA spodaj), da stran vedno deluje. */
-function isFileProtocol(){
-  return location.protocol === "file:";
+async function loadFromGithub(){
+  const c=state.config;
+  if(!c.ghToken||!c.ghOwner||!c.ghRepo)throw new Error("GitHub nastavitve niso popolne.");
+  const path=c.ghPath||"articles.json",branch=c.ghBranch||"main";
+  const url=`https://api.github.com/repos/${encodeURIComponent(c.ghOwner)}/${encodeURIComponent(c.ghRepo)}/contents/${path.split("/").map(encodeURIComponent).join("/")}?ref=${encodeURIComponent(branch)}`;
+  const r=await fetch(url,{headers:{"Authorization":"Bearer "+c.ghToken,"Accept":"application/vnd.github+json"}});
+  if(!r.ok){let j={};try{j=await r.json()}catch{}throw new Error(`GitHub ${r.status}${j.message?": "+j.message:""}`)}
+  const j=await r.json();state.sha=j.sha;
+  const binary=atob((j.content||"").replace(/\n/g,""));
+  const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));
+  state.data=JSON.parse(new TextDecoder("utf-8").decode(bytes));
 }
 async function loadArticles(){
-  $("#grid").innerHTML = '<div class="loading-msg">Nalaganje člankov…</div>';
-  $("#fileWarning") && ($("#fileWarning").hidden = true);
-  let loaded = false;
+  $("#grid").innerHTML='<div class="loading-msg">Nalaganje člankov…</div>';
+  $("#fileWarning").hidden=true;
+  let loaded=false;
 
-  if(state.config.ghToken && state.config.ghOwner && state.config.ghRepo){
-    try{ await loadFromGithub(); loaded = true; }
-    catch(err){ console.error(err); toast("Napake pri branju z GitHub, poskušam lokalno datoteko..."); }
+  // NAJPREJ javni articles.json. GitHub API ni potreben za obisk strani.
+  if(!isFile()){
+    try{state.data=await fetchJsonFile();loaded=true}
+    catch(e){console.warn("articles.json ni dosegljiv:",e)}
   }
 
-  if(!loaded && !isFileProtocol()){
-    try{
-      const res = await fetch("articles.json?_=" + Date.now());
-      if(!res.ok) throw new Error("HTTP " + res.status);
-      state.data = await res.json();
-      loaded = true;
-    }catch(err){ console.error(err); }
+  // GitHub API uporabimo kot rezervno možnost samo, če je nastavljen.
+  if(!loaded && state.config.ghToken&&state.config.ghOwner&&state.config.ghRepo){
+    try{await loadFromGithub();loaded=true}
+    catch(e){console.error(e);toast("GitHub ni dosegljiv: "+e.message)}
   }
 
   if(!loaded){
-    // Rezervna kopija (deluje tudi brez strežnika, npr. ob dvokliku na index.html)
-    state.data = JSON.parse(JSON.stringify(window.EMBEDDED_DATA || {settings:{title:"Radovedni",subtitle:"",description:"",categories:[]},articles:[]}));
-    loaded = true;
-    if(isFileProtocol()){
-      const w = $("#fileWarning");
-      if(w) w.hidden = false;
-    } else {
-      toast("Ni bilo mogoče naložiti articles.json — prikazani so vgrajeni vzorčni članki.");
-    }
+    state.data=structuredClone(EMBEDDED_DATA);
+    if(isFile())$("#fileWarning").hidden=false;
+    else toast("articles.json ni bilo mogoče prebrati — prikazani so vgrajeni članki.");
   }
-
-  if(!state.data.settings) state.data.settings = {title:"Radovedni",subtitle:"",description:"",categories:[]};
-  if(!state.data.articles) state.data.articles = [];
-  applySettingsToUI();
-  renderCategoryNav();
-  renderGrid();
+  normalizeData();applySettings();renderCategoryNav();renderGrid();
 }
-
-async function loadFromGithub(){
-  const {ghOwner,ghRepo,ghBranch,ghPath,ghToken} = state.config;
-  const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${encodeURIComponent(ghPath||"articles.json")}?ref=${encodeURIComponent(ghBranch||"main")}`;
-  const res = await fetch(url, { headers: { "Authorization":"Bearer "+ghToken, "Accept":"application/vnd.github+json" } });
-  if(!res.ok) throw new Error("GitHub GET ni uspel: " + res.status);
-  const json = await res.json();
-  state.sha = json.sha;
-  const content = decodeURIComponent(escape(atob(json.content.replace(/\n/g,""))));
-  state.data = JSON.parse(content);
+function normalizeData(){
+  if(!state.data||typeof state.data!=="object")state.data=structuredClone(EMBEDDED_DATA);
+  if(!state.data.settings)state.data.settings=structuredClone(EMBEDDED_DATA.settings);
+  if(!Array.isArray(state.data.settings.categories))state.data.settings.categories=[];
+  if(!Array.isArray(state.data.articles))state.data.articles=[];
 }
-
-async function saveToGithub(commitMessage){
-  const {ghOwner,ghRepo,ghBranch,ghPath,ghToken} = state.config;
-  if(!ghToken || !ghOwner || !ghRepo){
-    throw new Error("GitHub ni nastavljen. Odpri Nastavitve.");
-  }
-  const path = ghPath || "articles.json";
-  const branch = ghBranch || "main";
-  const apiBase = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${encodeURIComponent(path)}`;
-
-  // Pridobi trenutni sha (za primer, da je bila datoteka medtem spremenjena)
-  let sha = state.sha;
-  try{
-    const getRes = await fetch(apiBase + `?ref=${encodeURIComponent(branch)}`, {
-      headers: { "Authorization":"Bearer "+ghToken, "Accept":"application/vnd.github+json" }
-    });
-    if(getRes.ok){
-      const getJson = await getRes.json();
-      sha = getJson.sha;
-    }
-  }catch(e){ /* ignoriraj, poskusi brez sha (novo ustvarjanje) */ }
-
-  const contentStr = JSON.stringify(state.data, null, 2);
-  const base64Content = btoa(unescape(encodeURIComponent(contentStr)));
-
-  const body = {
-    message: commitMessage || "Posodobitev articles.json",
-    content: base64Content,
-    branch: branch
-  };
-  if(sha) body.sha = sha;
-
-  const putRes = await fetch(apiBase, {
-    method:"PUT",
-    headers:{
-      "Authorization":"Bearer "+ghToken,
-      "Accept":"application/vnd.github+json",
-      "Content-Type":"application/json"
-    },
-    body: JSON.stringify(body)
-  });
-  if(!putRes.ok){
-    const errJson = await putRes.json().catch(()=>({}));
-    throw new Error("GitHub PUT ni uspel: " + putRes.status + " " + (errJson.message||""));
-  }
-  const putJson = await putRes.json();
-  state.sha = putJson.content ? putJson.content.sha : sha;
+function applySettings(){
+  const s=state.data.settings;
+  document.title=(s.title||"Radovedni")+" — Revija stripov, ilustracij in zgodb";
+  $("#siteTitleText").textContent=s.title||"Radovedni";$("#siteSubtitleText").textContent=s.subtitle||"";
+  $("#heroTitle").textContent=s.title||"Radovedni";$("#heroSubtitle").textContent=s.subtitle||s.description||"";
+  $("#footerYear").textContent=new Date().getFullYear();
 }
-
-async function persistChanges(commitMessage){
-  const hasGithub = state.config.ghToken && state.config.ghOwner && state.config.ghRepo;
-  if(hasGithub){
-    try{
-      await saveToGithub(commitMessage);
-      toast("✓ Objavljeno na GitHub!");
-      return true;
-    }catch(err){
-      console.error(err);
-      toast("Napaka pri objavi na GitHub: " + err.message);
-      return false;
-    }
-  } else {
-    toast("GitHub ni povezan — sprememba je shranjena samo lokalno. Prenesi articles.json v Nastavitvah.");
-    return true;
-  }
-}
-
-/* ============================================================
-   NASTAVITVE / IZGLED
-   ============================================================ */
-function applySettingsToUI(){
-  const s = state.data.settings;
-  document.title = (s.title||"Radovedni") + " — Revija stripov, ilustracij in zgodb";
-  $("#siteTitleText").textContent = s.title || "Radovedni";
-  $("#siteSubtitleText").textContent = s.subtitle || "";
-  $("#heroTitle").textContent = s.title || "Radovedni";
-  $("#heroSubtitle").textContent = s.subtitle || s.description || "";
-  $("#footerYear").textContent = new Date().getFullYear();
-}
-
 function renderCategoryNav(){
-  const nav = $("#categoryNav");
-  const cats = state.data.settings.categories || [];
-  let html = `<button class="cat-pill ${state.activeCategory==='__vse__'?'active':''}" data-cat="__vse__">Vse</button>`;
-  cats.forEach(cat=>{
-    html += `<button class="cat-pill ${state.activeCategory===cat?'active':''}" data-cat="${escapeHtml(cat)}" style="${state.activeCategory===cat?`background:${catColor(cat)};border-color:${catColor(cat)}`:''}">${escapeHtml(cat)}</button>`;
-  });
-  nav.innerHTML = html;
-  $$(".cat-pill").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      state.activeCategory = btn.dataset.cat;
-      renderCategoryNav();
-      renderGrid();
-    });
-  });
+  const cats=state.data.settings.categories||[];
+  $("#categoryNav").innerHTML=`<button class="cat-pill ${state.activeCategory==="__vse__"?"active":""}" data-cat="__vse__">Vse</button>`+
+    cats.map(c=>`<button class="cat-pill ${state.activeCategory===c?"active":""}" data-cat="${esc(c)}" ${state.activeCategory===c?`style="background:${catColor(c)};border-color:${catColor(c)}"`:""}>${esc(c)}</button>`).join("");
+  $$(".cat-pill").forEach(b=>b.onclick=()=>{state.activeCategory=b.dataset.cat;renderCategoryNav();renderGrid()});
 }
-
-/* ============================================================
-   PRIKAZ MREŽE ČLANKOV
-   ============================================================ */
-function getFilteredArticles(){
-  let list = state.data.articles.slice().sort((a,b)=> (b.date||"").localeCompare(a.date||""));
-  if(state.activeCategory !== "__vse__"){
-    list = list.filter(a=>a.category===state.activeCategory);
-  }
-  if(state.searchTerm){
-    const t = state.searchTerm.toLowerCase();
-    list = list.filter(a=>
-      (a.title||"").toLowerCase().includes(t) ||
-      (a.summary||"").toLowerCase().includes(t) ||
-      (a.author||"").toLowerCase().includes(t)
-    );
-  }
-  return list;
+function filtered(){
+  let a=[...state.data.articles].sort((x,y)=>(y.date||"").localeCompare(x.date||""));
+  if(state.activeCategory!=="__vse__")a=a.filter(x=>x.category===state.activeCategory);
+  if(state.searchTerm){const t=state.searchTerm.toLowerCase();a=a.filter(x=>[x.title,x.summary,x.author,x.category].some(v=>(v||"").toLowerCase().includes(t)))}
+  return a;
 }
-
 function renderGrid(){
-  const list = getFilteredArticles();
-  const grid = $("#grid");
-  const emptyMsg = $("#emptyMsg");
-  if(list.length===0){
-    grid.innerHTML = "";
-    emptyMsg.hidden = false;
-    return;
-  }
-  emptyMsg.hidden = true;
-  grid.innerHTML = list.map(renderCard).join("");
-
-  $$(".card").forEach(card=>{
-    card.addEventListener("click", (e)=>{
-      if(e.target.closest(".card-admin-actions")) return;
-      const id = card.dataset.id;
-      const article = state.data.articles.find(a=>a.id===id);
-      if(!article) return;
-      if(article.type==="strip") openStripReader(article);
-      else openStoryReader(article);
-    });
-  });
-  if(state.isAdmin){
-    $$(".card-edit-btn").forEach(btn=>{
-      btn.addEventListener("click",(e)=>{
-        e.stopPropagation();
-        openArticleModal(btn.dataset.id);
-      });
-    });
-    $$(".card-del-btn").forEach(btn=>{
-      btn.addEventListener("click",(e)=>{
-        e.stopPropagation();
-        state.pendingDeleteId = btn.dataset.id;
-        $("#deleteModalOverlay").hidden = false;
-      });
-    });
-  }
+  const list=filtered();$("#emptyMsg").hidden=list.length>0;
+  $("#grid").innerHTML=list.map(cardHtml).join("");
+  $$(".card").forEach(c=>c.onclick=e=>{if(e.target.closest(".card-admin-actions"))return;const a=state.data.articles.find(x=>x.id===c.dataset.id);if(a?.type==="strip")openStrip(a);else if(a)openStory(a)});
+  $$(".card-edit-btn").forEach(b=>b.onclick=e=>{e.stopPropagation();openArticleModal(b.dataset.id)});
+  $$(".card-del-btn").forEach(b=>b.onclick=e=>{e.stopPropagation();state.pendingDeleteId=b.dataset.id;$("#deleteModalOverlay").hidden=false});
+}
+function cardHtml(a){
+  const cover=a.coverImage||(a.panels?.[0]?.url||"");const color=catColor(a.category);
+  const type=a.type==="strip"?`📱 Strip · ${(a.panels||[]).length} panelov`:"📖 Zgodba";
+  return `<div class="card" data-id="${esc(a.id)}"><div class="card-media">${cover?`<img src="${esc(cover)}" alt="${esc(a.title)}" loading="lazy">`:""}<span class="card-type-badge">${type}</span><span class="card-cat-badge" style="background:${color}">${esc(a.category||"Splošno")}</span>${state.isAdmin?`<div class="card-admin-actions"><button class="card-edit-btn" data-id="${esc(a.id)}">✎</button><button class="card-del-btn" data-id="${esc(a.id)}">🗑</button></div>`:""}</div><div class="card-body"><div class="card-title">${esc(a.title)}</div><div class="card-summary">${esc(a.summary)}</div><div class="card-meta"><span>${esc(a.author||"Uredništvo")}</span><span>${formatDate(a.date)}</span></div></div></div>`;
 }
 
-function renderCard(a){
-  const color = catColor(a.category);
-  const typeLabel = a.type==="strip" ? `📱 Strip · ${(a.panels||[]).length} panelov` : "📖 Zgodba";
-  const cover = a.coverImage || (a.type==="strip" && a.panels && a.panels[0] ? a.panels[0].url : "");
-  const dateStr = a.date ? formatDate(a.date) : "";
-  const adminActions = state.isAdmin ? `
-    <div class="card-admin-actions">
-      <button class="card-edit-btn" data-id="${a.id}" title="Uredi">✎</button>
-      <button class="card-del-btn" data-id="${a.id}" title="Izbriši">🗑</button>
-    </div>` : "";
-  return `
-  <div class="card" data-id="${a.id}">
-    <div class="card-media">
-      ${cover ? `<img src="${escapeHtml(cover)}" alt="${escapeHtml(a.title)}" loading="lazy">` : ""}
-      <span class="card-type-badge">${typeLabel}</span>
-      <span class="card-cat-badge" style="background:${color}">${escapeHtml(a.category||"Splošno")}</span>
-      ${adminActions}
-    </div>
-    <div class="card-body">
-      <div class="card-title">${escapeHtml(a.title)}</div>
-      <div class="card-summary">${escapeHtml(a.summary||"")}</div>
-      <div class="card-meta"><span>${escapeHtml(a.author||"Uredništvo")}</span><span>${dateStr}</span></div>
-    </div>
-  </div>`;
+function openStrip(a){state.currentStrip=a;state.currentPanelIndex=0;$("#stripReaderTitle").textContent=a.title;$("#stripReader").hidden=false;document.body.style.overflow="hidden";showPanel(0)}
+function showPanel(i){const p=state.currentStrip?.panels||[];if(!p[i])return;state.currentPanelIndex=i;$("#panelImage").src=p[i].url;$("#stripCounter").textContent=`${i+1} / ${p.length}`;$("#stripProgress").innerHTML=p.map((_,n)=>`<div class="seg ${n<=i?"done":""}" data-i="${n}"></div>`).join("");$$(".reader-progress .seg").forEach(x=>x.onclick=()=>showPanel(+x.dataset.i));$("#stripPrevBtn").style.visibility=i?"visible":"hidden";$("#stripNextBtn").style.visibility=i<p.length-1?"visible":"hidden";if(p[i+1])new Image().src=p[i+1].url}
+function closeStrip(){ $("#stripReader").hidden=true;document.body.style.overflow="";state.currentStrip=null}
+function nextPanel(){if(state.currentStrip&&state.currentPanelIndex<state.currentStrip.panels.length-1)showPanel(state.currentPanelIndex+1)}
+function prevPanel(){if(state.currentPanelIndex>0)showPanel(state.currentPanelIndex-1)}
+
+function openStory(a){
+  let html=a.coverImage?`<img class="story-cover" src="${esc(a.coverImage)}" alt="${esc(a.title)}">`:"";
+  html+=`<span class="story-cat" style="background:${catColor(a.category)}">${esc(a.category||"Splošno")}</span><h1 class="story-title">${esc(a.title)}</h1><div class="story-meta">${esc(a.author||"Uredništvo")} · ${formatDate(a.date)}</div>`;
+  for(const b of a.content||[]){if(b.type==="text")html+=`<p class="story-block-text">${esc(b.value).replace(/\n/g,"<br>")}</p>`;else if(b.type==="image")html+=`<div class="story-block-image"><img class="lightbox-trigger" data-src="${esc(b.url)}" src="${esc(b.url)}" alt="${esc(b.caption||a.title)}">${b.caption?`<div class="story-block-caption">${esc(b.caption)}</div>`:""}</div>`}
+  if(a.gallery?.length)html+=`<div class="story-gallery-heading">🖼 Galerija</div><div class="story-gallery">${a.gallery.map(u=>`<img class="lightbox-trigger" data-src="${esc(u)}" src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>`;
+  $("#storyContent").innerHTML=html;$$(".lightbox-trigger").forEach(i=>i.onclick=()=>{$("#lightboxImage").src=i.dataset.src;$("#lightbox").hidden=false});$("#storyReader").hidden=false;$("#storyReader").scrollTop=0;document.body.style.overflow="hidden";
+}
+function closeStory(){$("#storyReader").hidden=true;document.body.style.overflow=""}
+
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return String(h)}
+function setAdmin(on){state.isAdmin=on;$("#adminToolbar").hidden=!on;$("#adminPill").hidden=!on;$("#logoutBtn").hidden=!on;$("#settingsBtn").hidden=!on;$("#loginBtn").hidden=on;renderGrid()}
+$("#loginBtn").onclick=()=>{$("#loginHint").textContent=state.config.adminPassHash?"Vnesi administratorsko geslo.":"Vnesi novo geslo, da ga nastaviš.";$("#loginPasswordInput").value="";$("#loginModalOverlay").hidden=false;$("#loginPasswordInput").focus()}
+$("#loginSubmitBtn").onclick=()=>{const p=$("#loginPasswordInput").value;if(!p)return toast("Vnesi geslo.");if(!state.config.adminPassHash){state.config.adminPassHash=hash(p);saveConfig();$("#loginModalOverlay").hidden=true;setAdmin(true);toast("Geslo nastavljeno.");return}if(hash(p)===state.config.adminPassHash){$("#loginModalOverlay").hidden=true;setAdmin(true);toast("Prijava uspešna.")}else toast("Napačno geslo.")}
+$("#logoutBtn").onclick=()=>{setAdmin(false);toast("Odjavljen/-a.")}
+$("#loginModalCloseBtn").onclick=$("#loginCancelBtn").onclick=()=>$("#loginModalOverlay").hidden=true;
+
+function populateCats(){ $("#fieldCategory").innerHTML=(state.data.settings.categories||[]).map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("")}
+function setType(t){state.currentType=t;$("#typeStripBtn").classList.toggle("active",t==="strip");$("#typeZgodbaBtn").classList.toggle("active",t==="zgodba");$("#panelsSection").hidden=t!=="strip";$("#contentSection").hidden=t!=="zgodba"}
+function openArticleModal(id){
+  state.editingId=id||null;populateCats();$("#deleteArticleBtn").hidden=!id;
+  const a=id?state.data.articles.find(x=>x.id===id):null;
+  $("#articleModalTitle").textContent=id?"Uredi članek":"Nov članek";setType(a?.type||"strip");
+  $("#fieldCategory").value=a?.category||state.data.settings.categories[0]||"";$("#fieldAuthor").value=a?.author||"";$("#fieldTitle").value=a?.title||"";$("#fieldSummary").value=a?.summary||"";$("#fieldCover").value=a?.coverImage||"";
+  state.panelDraft=structuredClone(a?.panels||[]);state.contentDraft=structuredClone(a?.content||[]);state.galleryDraft=[...(a?.gallery||[])];renderPanels();renderContent();renderGallery();$("#articleModalOverlay").hidden=false;
+}
+function closeArticleModal(){$("#articleModalOverlay").hidden=true}
+$("#typeStripBtn").onclick=()=>setType("strip");$("#typeZgodbaBtn").onclick=()=>setType("zgodba");$("#newArticleBtn").onclick=()=>openArticleModal();$("#articleModalCloseBtn").onclick=$("#articleCancelBtn").onclick=closeArticleModal;
+
+function renderPanels(){
+  $("#panelsList").innerHTML=state.panelDraft.map((p,i)=>`<div class="dyn-item" data-i="${i}">${p.url?`<img class="dyn-thumb" src="${esc(p.url)}">`:`<div class="dyn-thumb"></div>`}<div class="dyn-fields"><input class="panel-url-input" value="${esc(p.url)}" placeholder="https://..."><select class="panel-format-select"><option ${p.format==="9:16"?"selected":""}>9:16</option><option ${p.format==="1:1"?"selected":""}>1:1</option><option ${p.format==="4:5"?"selected":""}>4:5</option><option ${p.format==="16:9"?"selected":""}>16:9</option><option value="original" ${p.format==="original"?"selected":""}>Izvirno</option></select></div><div class="dyn-drag-handles"><button class="dyn-order-btn up">▲</button><button class="dyn-order-btn down">▼</button></div><button class="dyn-remove remove">✕</button></div>`).join("")||'<p class="field-hint">Še ni dodanih panelov.</p>';
+  $$("#panelsList .dyn-item").forEach(el=>{const i=+el.dataset.i;el.querySelector(".panel-url-input").oninput=e=>{state.panelDraft[i].url=e.target.value};el.querySelector(".panel-format-select").onchange=e=>state.panelDraft[i].format=e.target.value;el.querySelector(".remove").onclick=()=>{state.panelDraft.splice(i,1);renderPanels()};el.querySelector(".up").onclick=()=>{if(i){[state.panelDraft[i-1],state.panelDraft[i]]=[state.panelDraft[i],state.panelDraft[i-1]];renderPanels()}};el.querySelector(".down").onclick=()=>{if(i<state.panelDraft.length-1){[state.panelDraft[i+1],state.panelDraft[i]]=[state.panelDraft[i],state.panelDraft[i+1]];renderPanels()}}})
+}
+$("#addPanelBtn").onclick=()=>{state.panelDraft.push({url:"",format:"9:16"});renderPanels()}
+
+function renderContent(){
+  $("#contentList").innerHTML=state.contentDraft.map((b,i)=>`<div class="dyn-item" data-i="${i}"><div class="dyn-fields">${b.type==="text"?`<label class="field-hint">📝 Odstavek</label><textarea rows="3" class="ct">${esc(b.value)}</textarea>`:`<label class="field-hint">🖼 Slika</label><input class="cu" value="${esc(b.url)}" placeholder="https://..."><input class="cc" value="${esc(b.caption)}" placeholder="Podnapis (neobvezno)">`}</div><div class="dyn-drag-handles"><button class="dyn-order-btn up">▲</button><button class="dyn-order-btn down">▼</button></div><button class="dyn-remove remove">✕</button></div>`).join("")||'<p class="field-hint">Dodaj odstavek ali sliko.</p>';
+  $$("#contentList .dyn-item").forEach(el=>{const i=+el.dataset.i,b=state.contentDraft[i];if(b.type==="text")el.querySelector(".ct").oninput=e=>b.value=e.target.value;else{el.querySelector(".cu").oninput=e=>b.url=e.target.value;el.querySelector(".cc").oninput=e=>b.caption=e.target.value}el.querySelector(".remove").onclick=()=>{state.contentDraft.splice(i,1);renderContent()};el.querySelector(".up").onclick=()=>{if(i){[state.contentDraft[i-1],state.contentDraft[i]]=[state.contentDraft[i],state.contentDraft[i-1]];renderContent()}};el.querySelector(".down").onclick=()=>{if(i<state.contentDraft.length-1){[state.contentDraft[i+1],state.contentDraft[i]]=[state.contentDraft[i],state.contentDraft[i+1]];renderContent()}}})
+}
+$("#addTextBlockBtn").onclick=()=>{state.contentDraft.push({type:"text",value:""});renderContent()};$("#addImageBlockBtn").onclick=()=>{state.contentDraft.push({type:"image",url:"",caption:""});renderContent()}
+function renderGallery(){
+  $("#galleryList").innerHTML=state.galleryDraft.map((u,i)=>`<div class="dyn-item" data-i="${i}">${u?`<img class="dyn-thumb" src="${esc(u)}">`:`<div class="dyn-thumb"></div>`}<div class="dyn-fields"><input class="gu" value="${esc(u)}" placeholder="https://..."></div><button class="dyn-remove remove">✕</button></div>`).join("")||'<p class="field-hint">Galerija je prazna.</p>';
+  $$("#galleryList .dyn-item").forEach(el=>{const i=+el.dataset.i;el.querySelector(".gu").oninput=e=>state.galleryDraft[i]=e.target.value;el.querySelector(".remove").onclick=()=>{state.galleryDraft.splice(i,1);renderGallery()}})
+}
+$("#addGalleryBtn").onclick=()=>{state.galleryDraft.push("");renderGallery()};
+
+async function saveGithub(){
+  const c=state.config;if(!c.ghToken||!c.ghOwner||!c.ghRepo)throw new Error("GitHub ni nastavljen.");
+  const path=c.ghPath||"articles.json",branch=c.ghBranch||"main";
+  const base=`https://api.github.com/repos/${encodeURIComponent(c.ghOwner)}/${encodeURIComponent(c.ghRepo)}/contents/${path.split("/").map(encodeURIComponent).join("/")}`;
+  let sha=state.sha;const r=await fetch(base+"?ref="+encodeURIComponent(branch),{headers:{"Authorization":"Bearer "+c.ghToken,"Accept":"application/vnd.github+json"}});
+  if(r.ok)sha=(await r.json()).sha;
+  const bytes=new TextEncoder().encode(JSON.stringify(state.data,null,2));let bin="";bytes.forEach(b=>bin+=String.fromCharCode(b));const content=btoa(bin);
+  const body={message:"Posodobitev articles.json",content,branch};if(sha)body.sha=sha;
+  const put=await fetch(base,{method:"PUT",headers:{"Authorization":"Bearer "+c.ghToken,"Accept":"application/vnd.github+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!put.ok){let j={};try{j=await put.json()}catch{}throw new Error(`GitHub ${put.status}${j.message?": "+j.message:""}`)}
+  const j=await put.json();state.sha=j.content?.sha||sha;
+}
+async function persist(msg){
+  if(!state.config.ghToken||!state.config.ghOwner||!state.config.ghRepo){toast("Shranjeno samo v tej strani. Za objavo nastavi GitHub.");return}
+  try{await saveGithub();toast("✓ Objavljeno na GitHub!")}catch(e){console.error(e);toast("Napaka pri objavi: "+e.message)}
 }
 
-function formatDate(str){
-  try{
-    const d = new Date(str);
-    return d.toLocaleDateString("sl-SI", {day:"numeric",month:"short",year:"numeric"});
-  }catch(e){ return str; }
-}
+$("#articleSaveBtn").onclick=async()=>{
+  const title=$("#fieldTitle").value.trim();if(!title)return toast("Naslov članka je obvezen.");
+  const type=state.currentType,category=$("#fieldCategory").value;
+  if(type==="strip"&&!state.panelDraft.some(p=>p.url.trim()))return toast("Dodaj vsaj en panel.");
+  if(type==="zgodba"&&!state.contentDraft.some(b=>(b.type==="text"&&b.value.trim())||(b.type==="image"&&b.url.trim())))return toast("Dodaj vsaj eno vsebino.");
+  let a=state.editingId?state.data.articles.find(x=>x.id===state.editingId):{id:slugify(title)+"-"+uid().slice(-4),date:new Date().toISOString().slice(0,10)};
+  Object.assign(a,{type,category,author:$("#fieldAuthor").value.trim(),title,summary:$("#fieldSummary").value.trim(),coverImage:$("#fieldCover").value.trim()});
+  if(type==="strip"){a.panels=state.panelDraft.filter(p=>p.url.trim());delete a.content;delete a.gallery}else{a.content=state.contentDraft.filter(b=>(b.type==="text"&&b.value.trim())||(b.type==="image"&&b.url.trim()));a.gallery=state.galleryDraft.filter(Boolean);delete a.panels}
+  if(!state.editingId)state.data.articles.push(a);closeArticleModal();renderGrid();await persist("Posodobitev articles.json");
+};
 
-/* ============================================================
-   STRIP READER (paneli 9:16, po telefonu prijazno branje)
-   ============================================================ */
-function openStripReader(article){
-  state.currentStrip = article;
-  state.currentPanelIndex = 0;
-  $("#stripReaderTitle").textContent = article.title;
-  renderStripProgress();
-  showPanel(0);
-  $("#stripReader").hidden = false;
-  document.body.style.overflow = "hidden";
-}
-function closeStripReader(){
-  $("#stripReader").hidden = true;
-  document.body.style.overflow = "";
-  state.currentStrip = null;
-}
-function renderStripProgress(){
-  const panels = state.currentStrip.panels || [];
-  $("#stripProgress").innerHTML = panels.map((_,i)=>`<div class="seg ${i<=state.currentPanelIndex?'done':''}" data-i="${i}"></div>`).join("");
-  $$(".reader-progress .seg").forEach(seg=>{
-    seg.addEventListener("click", ()=> showPanel(parseInt(seg.dataset.i,10)));
-  });
-}
-function showPanel(index){
-  const panels = state.currentStrip.panels || [];
-  if(index<0 || index>=panels.length) return;
-  state.currentPanelIndex = index;
-  const panel = panels[index];
-  $("#panelImage").src = panel.url;
-  $("#stripCounter").textContent = `${index+1} / ${panels.length}`;
-  $$(".reader-progress .seg").forEach((seg,i)=> seg.classList.toggle("done", i<=index));
-  $("#stripPrevBtn").style.visibility = index===0 ? "hidden":"visible";
-  $("#stripNextBtn").style.visibility = index===panels.length-1 ? "hidden":"visible";
-  // predvidi naslednjo sliko
-  if(panels[index+1]){ const pre = new Image(); pre.src = panels[index+1].url; }
-}
-function nextPanel(){
-  const panels = state.currentStrip.panels || [];
-  if(state.currentPanelIndex < panels.length-1) showPanel(state.currentPanelIndex+1);
-}
-function prevPanel(){
-  if(state.currentPanelIndex > 0) showPanel(state.currentPanelIndex-1);
-}
+$("#deleteArticleBtn").onclick=()=>{state.pendingDeleteId=state.editingId;closeArticleModal();$("#deleteModalOverlay").hidden=false};
+$("#deleteConfirmBtn").onclick=async()=>{const a=state.data.articles.find(x=>x.id===state.pendingDeleteId);state.data.articles=state.data.articles.filter(x=>x.id!==state.pendingDeleteId);$("#deleteModalOverlay").hidden=true;renderGrid();await persist("Izbris članka")};
+$("#deleteModalCloseBtn").onclick=$("#deleteCancelBtn").onclick=()=>$("#deleteModalOverlay").hidden=true;
 
-/* dotik / drsenje za mobilne naprave */
-let touchStartX = null;
-$("#stripStage").addEventListener("touchstart", e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
-$("#stripStage").addEventListener("touchend", e=>{
-  if(touchStartX===null) return;
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if(Math.abs(dx) > 40){
-    if(dx<0) nextPanel(); else prevPanel();
-  }
-  touchStartX = null;
-}, {passive:true});
-$("#stripStage").addEventListener("click", (e)=>{
-  if(e.target.closest(".reader-nav")) return;
-  const rect = $("#stripStage").getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  if(x < rect.width*0.35) prevPanel();
-  else if(x > rect.width*0.65) nextPanel();
-});
-document.addEventListener("keydown", (e)=>{
-  if($("#stripReader").hidden) return;
-  if(e.key==="ArrowRight") nextPanel();
-  if(e.key==="ArrowLeft") prevPanel();
-  if(e.key==="Escape") closeStripReader();
-});
+function openSettings(){const c=state.config;$("#ghToken").value=c.ghToken||"";$("#ghOwner").value=c.ghOwner||"";$("#ghRepo").value=c.ghRepo||"";$("#ghBranch").value=c.ghBranch||"main";$("#ghPath").value=c.ghPath||"articles.json";$("#settingsTitleInput").value=state.data.settings.title||"";$("#settingsSubtitleInput").value=state.data.settings.subtitle||"";$("#ghStatus").textContent="";renderCategoryManage();$("#settingsModalOverlay").hidden=false}
+$("#settingsBtn").onclick=$("#openSettingsBtn2").onclick=openSettings;$("#settingsModalCloseBtn").onclick=$("#settingsCloseBtn2").onclick=()=>$("#settingsModalOverlay").hidden=true;
+$("#ghSaveBtn").onclick=()=>{Object.assign(state.config,{ghToken:$("#ghToken").value.trim(),ghOwner:$("#ghOwner").value.trim(),ghRepo:$("#ghRepo").value.trim(),ghBranch:$("#ghBranch").value.trim()||"main",ghPath:$("#ghPath").value.trim()||"articles.json"});saveConfig();toast("GitHub nastavitve shranjene.")};
+$("#ghTestBtn").onclick=async()=>{const owner=$("#ghOwner").value.trim(),repo=$("#ghRepo").value.trim(),token=$("#ghToken").value.trim(),branch=$("#ghBranch").value.trim()||"main",path=$("#ghPath").value.trim()||"articles.json",s=$("#ghStatus");s.textContent="Preverjam…";try{const url=`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path.split("/").map(encodeURIComponent).join("/")}?ref=${encodeURIComponent(branch)}`;const r=await fetch(url,{headers:{...(token?{"Authorization":"Bearer "+token}:{}),"Accept":"application/vnd.github+json"}});if(!r.ok)throw new Error("HTTP "+r.status);s.textContent="✓ Povezava uspešna — articles.json je najden.";s.className="gh-status ok"}catch(e){s.textContent="✕ "+e.message;s.className="gh-status err"}};
 
-/* ============================================================
-   STORY READER (zgodba za branje + galerija)
-   ============================================================ */
-function openStoryReader(article){
-  const color = catColor(article.category);
-  let blocksHtml = "";
-  (article.content||[]).forEach(block=>{
-    if(block.type==="text"){
-      blocksHtml += `<p class="story-block-text">${escapeHtml(block.value).replace(/\n/g,"<br>")}</p>`;
-    } else if(block.type==="image"){
-      blocksHtml += `<div class="story-block-image">
-        <img src="${escapeHtml(block.url)}" alt="${escapeHtml(block.caption||article.title)}" class="lightbox-trigger" data-src="${escapeHtml(block.url)}">
-        ${block.caption ? `<div class="story-block-caption">${escapeHtml(block.caption)}</div>`:""}
-      </div>`;
-    }
-  });
-  let galleryHtml = "";
-  if(article.gallery && article.gallery.length){
-    galleryHtml = `<div class="story-gallery-heading">🖼 Galerija</div>
-      <div class="story-gallery">
-        ${article.gallery.map(url=>`<img src="${escapeHtml(url)}" class="lightbox-trigger" data-src="${escapeHtml(url)}" loading="lazy">`).join("")}
-      </div>`;
-  }
-  $("#storyContent").innerHTML = `
-    ${article.coverImage ? `<img class="story-cover" src="${escapeHtml(article.coverImage)}" alt="${escapeHtml(article.title)}">`:""}
-    <span class="story-cat" style="background:${color}">${escapeHtml(article.category||"Splošno")}</span>
-    <h1 class="story-title">${escapeHtml(article.title)}</h1>
-    <div class="story-meta">${escapeHtml(article.author||"Uredništvo")} · ${article.date?formatDate(article.date):""}</div>
-    ${blocksHtml}
-    ${galleryHtml}
-  `;
-  $$(".lightbox-trigger").forEach(img=>{
-    img.addEventListener("click", ()=>{
-      $("#lightboxImage").src = img.dataset.src;
-      $("#lightbox").hidden = false;
-    });
-  });
-  $("#storyReader").hidden = false;
-  $("#storyReader").scrollTop = 0;
-  document.body.style.overflow = "hidden";
-}
-function closeStoryReader(){
-  $("#storyReader").hidden = true;
-  document.body.style.overflow = "";
-}
+function renderCategoryManage(){const cats=state.data.settings.categories||[];$("#categoryManageList").innerHTML=cats.map(c=>`<div class="category-manage-item"><span>${esc(c)}</span><button data-cat="${esc(c)}">✕</button></div>`).join("")||'<p class="field-hint">Ni rubrik.</p>';$$("#categoryManageList button").forEach(b=>b.onclick=async()=>{const c=b.dataset.cat;if(state.data.articles.some(a=>a.category===c)&&!confirm("Rubrika je uporabljena. Izbrisati?"))return;state.data.settings.categories=state.data.settings.categories.filter(x=>x!==c);state.data.articles.forEach(a=>{if(a.category===c)a.category=""});renderCategoryManage();renderCategoryNav();renderGrid();await persist("Izbris rubrike")})}
+$("#addCategoryBtn").onclick=async()=>{const i=$("#newCategoryInput"),n=i.value.trim();if(!n||state.data.settings.categories.includes(n))return;state.data.settings.categories.push(n);i.value="";renderCategoryManage();renderCategoryNav();await persist("Nova rubrika")};
+$("#saveTitleBtn").onclick=async()=>{state.data.settings.title=$("#settingsTitleInput").value.trim()||"Radovedni";state.data.settings.subtitle=$("#settingsSubtitleInput").value.trim();applySettings();await persist("Posodobitev naslova")};
+$("#downloadJsonBtn").onclick=()=>{const blob=new Blob([JSON.stringify(state.data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="articles.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
 
-/* ============================================================
-   ADMIN: PRIJAVA
-   ============================================================ */
-function simpleHash(str){
-  let h = 0;
-  for(let i=0;i<str.length;i++){ h = (h*31 + str.charCodeAt(i)) | 0; }
-  return String(h);
-}
-function setAdminMode(on){
-  state.isAdmin = on;
-  $("#adminToolbar").hidden = !on;
-  $("#adminPill").hidden = !on;
-  $("#logoutBtn").hidden = !on;
-  $("#settingsBtn").hidden = !on;
-  $("#loginBtn").hidden = on;
-  renderGrid();
-}
-
-$("#loginBtn").addEventListener("click", ()=>{
-  const hasPass = !!state.config.adminPassHash;
-  $("#loginHint").textContent = hasPass ? "Vnesi administratorsko geslo." : "Geslo še ni nastavljeno — vnesi novo geslo, da ga nastaviš.";
-  $("#loginPasswordInput").value = "";
-  $("#loginModalOverlay").hidden = false;
-  $("#loginPasswordInput").focus();
-});
-$("#loginModalCloseBtn").addEventListener("click", ()=> $("#loginModalOverlay").hidden = true);
-$("#loginCancelBtn").addEventListener("click", ()=> $("#loginModalOverlay").hidden = true);
-$("#loginSubmitBtn").addEventListener("click", ()=>{
-  const val = $("#loginPasswordInput").value;
-  if(!val){ toast("Vnesi geslo."); return; }
-  if(!state.config.adminPassHash){
-    state.config.adminPassHash = simpleHash(val);
-    saveConfig();
-    toast("Geslo nastavljeno. Dobrodošel/-a, urednik!");
-    $("#loginModalOverlay").hidden = true;
-    setAdminMode(true);
-    return;
-  }
-  if(simpleHash(val) === state.config.adminPassHash){
-    $("#loginModalOverlay").hidden = true;
-    setAdminMode(true);
-    toast("Prijava uspešna.");
-  } else {
-    toast("Napačno geslo.");
-  }
-});
-$("#logoutBtn").addEventListener("click", ()=>{
-  setAdminMode(false);
-  toast("Odjavljen/-a iz urejevalnega načina.");
-});
-
-/* ============================================================
-   NOV / UREJANJE ČLANKA — modal
-   ============================================================ */
-function populateCategorySelect(){
-  const sel = $("#fieldCategory");
-  sel.innerHTML = (state.data.settings.categories||[]).map(c=>`<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
-}
-
-function openArticleModal(editId){
-  state.editingId = editId || null;
-  populateCategorySelect();
-  $("#deleteArticleBtn").hidden = !editId;
-
-  if(editId){
-    const a = state.data.articles.find(x=>x.id===editId);
-    $("#articleModalTitle").textContent = "Uredi članek";
-    state.currentType = a.type;
-    $("#fieldCategory").value = a.category || "";
-    $("#fieldAuthor").value = a.author || "";
-    $("#fieldTitle").value = a.title || "";
-    $("#fieldSummary").value = a.summary || "";
-    $("#fieldCover").value = a.coverImage || "";
-    state.panelDraft = a.panels ? JSON.parse(JSON.stringify(a.panels)) : [];
-    state.contentDraft = a.content ? JSON.parse(JSON.stringify(a.content)) : [];
-    state.galleryDraft = a.gallery ? a.gallery.slice() : [];
-  } else {
-    $("#articleModalTitle").textContent = "Nov članek";
-    state.currentType = "strip";
-    $("#fieldCategory").selectedIndex = 0;
-    $("#fieldAuthor").value = "";
-    $("#fieldTitle").value = "";
-    $("#fieldSummary").value = "";
-    $("#fieldCover").value = "";
-    state.panelDraft = [];
-    state.contentDraft = [];
-    state.galleryDraft = [];
-  }
-  setArticleType(state.currentType);
-  renderPanelsList();
-  renderContentList();
-  renderGalleryList();
-  $("#articleModalOverlay").hidden = false;
-}
-function closeArticleModal(){
-  $("#articleModalOverlay").hidden = true;
-}
-
-function setArticleType(type){
-  state.currentType = type;
-  $("#typeStripBtn").classList.toggle("active", type==="strip");
-  $("#typeZgodbaBtn").classList.toggle("active", type==="zgodba");
-  $("#panelsSection").hidden = type!=="strip";
-  $("#contentSection").hidden = type!=="zgodba";
-}
-$("#typeStripBtn").addEventListener("click", ()=> setArticleType("strip"));
-$("#typeZgodbaBtn").addEventListener("click", ()=> setArticleType("zgodba"));
-
-$("#newArticleBtn").addEventListener("click", ()=> openArticleModal(null));
-$("#articleModalCloseBtn").addEventListener("click", closeArticleModal);
-$("#articleCancelBtn").addEventListener("click", closeArticleModal);
-
-/* --- Paneli stripa --- */
-function renderPanelsList(){
-  const wrap = $("#panelsList");
-  wrap.innerHTML = state.panelDraft.map((p,i)=>`
-    <div class="dyn-item" data-i="${i}">
-      ${p.url ? `<img class="dyn-thumb" src="${escapeHtml(p.url)}">` : `<div class="dyn-thumb"></div>`}
-      <div class="dyn-fields">
-        <input type="text" class="panel-url-input" placeholder="https://... (slika panela)" value="${escapeHtml(p.url||"")}">
-        <div class="dyn-row-inline">
-          <select class="panel-format-select">
-            <option value="9:16" ${p.format==="9:16"?"selected":""}>9:16 (telefon)</option>
-            <option value="1:1" ${p.format==="1:1"?"selected":""}>1:1 (kvadrat)</option>
-            <option value="4:5" ${p.format==="4:5"?"selected":""}>4:5</option>
-            <option value="16:9" ${p.format==="16:9"?"selected":""}>16:9</option>
-            <option value="original" ${p.format==="original"?"selected":""}>Izvirno razmerje</option>
-          </select>
-        </div>
-      </div>
-      <div class="dyn-drag-handles">
-        <button class="dyn-order-btn move-up" title="Premakni gor">▲</button>
-        <button class="dyn-order-btn move-down" title="Premakni dol">▼</button>
-      </div>
-      <button class="dyn-remove" title="Odstrani">✕</button>
-    </div>
-  `).join("") || `<p class="field-hint">Še ni dodanih panelov. Klikni spodaj, da dodaš prvega.</p>`;
-
-  $$("#panelsList .dyn-item").forEach(item=>{
-    const i = parseInt(item.dataset.i,10);
-    item.querySelector(".panel-url-input").addEventListener("input", e=>{
-      state.panelDraft[i].url = e.target.value;
-      const thumb = item.querySelector(".dyn-thumb");
-      if(thumb.tagName==="IMG") thumb.src = e.target.value;
-    });
-    item.querySelector(".panel-format-select").addEventListener("change", e=>{
-      state.panelDraft[i].format = e.target.value;
-    });
-    item.querySelector(".dyn-remove").addEventListener("click", ()=>{
-      state.panelDraft.splice(i,1); renderPanelsList();
-    });
-    item.querySelector(".move-up").addEventListener("click", ()=>{
-      if(i>0){ [state.panelDraft[i-1],state.panelDraft[i]]=[state.panelDraft[i],state.panelDraft[i-1]]; renderPanelsList(); }
-    });
-    item.querySelector(".move-down").addEventListener("click", ()=>{
-      if(i<state.panelDraft.length-1){ [state.panelDraft[i+1],state.panelDraft[i]]=[state.panelDraft[i],state.panelDraft[i+1]]; renderPanelsList(); }
-    });
-  });
-}
-$("#addPanelBtn").addEventListener("click", ()=>{
-  state.panelDraft.push({url:"", format:"9:16"});
-  renderPanelsList();
-});
-
-/* --- Vsebina zgodbe (besedilo / slike) --- */
-function renderContentList(){
-  const wrap = $("#contentList");
-  wrap.innerHTML = state.contentDraft.map((b,i)=>{
-    if(b.type==="text"){
-      return `<div class="dyn-item" data-i="${i}">
-        <div class="dyn-fields">
-          <label class="field-hint">📝 Odstavek besedila</label>
-          <textarea rows="3" class="content-text-input" placeholder="Napiši odstavek...">${escapeHtml(b.value||"")}</textarea>
-        </div>
-        <div class="dyn-drag-handles">
-          <button class="dyn-order-btn move-up" title="Gor">▲</button>
-          <button class="dyn-order-btn move-down" title="Dol">▼</button>
-        </div>
-        <button class="dyn-remove" title="Odstrani">✕</button>
-      </div>`;
-    } else {
-      return `<div class="dyn-item" data-i="${i}">
-        ${b.url ? `<img class="dyn-thumb" src="${escapeHtml(b.url)}">` : `<div class="dyn-thumb"></div>`}
-        <div class="dyn-fields">
-          <label class="field-hint">🖼 Slika v besedilu</label>
-          <input type="text" class="content-image-url" placeholder="https://..." value="${escapeHtml(b.url||"")}">
-          <input type="text" class="content-image-caption" placeholder="Podnapis (neobvezno)" value="${escapeHtml(b.caption||"")}">
-        </div>
-        <div class="dyn-drag-handles">
-          <button class="dyn-order-btn move-up" title="Gor">▲</button>
-          <button class="dyn-order-btn move-down" title="Dol">▼</button>
-        </div>
-        <button class="dyn-remove" title="Odstrani">✕</button>
-      </div>`;
-    }
-  }).join("") || `<p class="field-hint">Dodaj prvi odstavek ali sliko.</p>`;
-
-  $$("#contentList .dyn-item").forEach(item=>{
-    const i = parseInt(item.dataset.i,10);
-    const b = state.contentDraft[i];
-    if(b.type==="text"){
-      item.querySelector(".content-text-input").addEventListener("input", e=>{ b.value = e.target.value; });
-    } else {
-      item.querySelector(".content-image-url").addEventListener("input", e=>{
-        b.url = e.target.value;
-        const thumb = item.querySelector(".dyn-thumb");
-        if(thumb.tagName==="IMG") thumb.src = e.target.value;
-      });
-      item.querySelector(".content-image-caption").addEventListener("input", e=>{ b.caption = e.target.value; });
-    }
-    item.querySelector(".dyn-remove").addEventListener("click", ()=>{ state.contentDraft.splice(i,1); renderContentList(); });
-    item.querySelector(".move-up").addEventListener("click", ()=>{
-      if(i>0){ [state.contentDraft[i-1],state.contentDraft[i]]=[state.contentDraft[i],state.contentDraft[i-1]]; renderContentList(); }
-    });
-    item.querySelector(".move-down").addEventListener("click", ()=>{
-      if(i<state.contentDraft.length-1){ [state.contentDraft[i+1],state.contentDraft[i]]=[state.contentDraft[i],state.contentDraft[i+1]]; renderContentList(); }
-    });
-  });
-}
-$("#addTextBlockBtn").addEventListener("click", ()=>{
-  state.contentDraft.push({type:"text", value:""});
-  renderContentList();
-});
-$("#addImageBlockBtn").addEventListener("click", ()=>{
-  state.contentDraft.push({type:"image", url:"", caption:""});
-  renderContentList();
-});
-
-/* --- Galerija --- */
-function renderGalleryList(){
-  const wrap = $("#galleryList");
-  wrap.innerHTML = state.galleryDraft.map((url,i)=>`
-    <div class="dyn-item" data-i="${i}">
-      ${url ? `<img class="dyn-thumb" src="${escapeHtml(url)}">` : `<div class="dyn-thumb"></div>`}
-      <div class="dyn-fields">
-        <input type="text" class="gallery-url-input" placeholder="https://..." value="${escapeHtml(url)}">
-      </div>
-      <button class="dyn-remove" title="Odstrani">✕</button>
-    </div>
-  `).join("") || `<p class="field-hint">Galerija je prazna.</p>`;
-
-  $$("#galleryList .dyn-item").forEach(item=>{
-    const i = parseInt(item.dataset.i,10);
-    item.querySelector(".gallery-url-input").addEventListener("input", e=>{
-      state.galleryDraft[i] = e.target.value;
-      const thumb = item.querySelector(".dyn-thumb");
-      if(thumb.tagName==="IMG") thumb.src = e.target.value;
-    });
-    item.querySelector(".dyn-remove").addEventListener("click", ()=>{ state.galleryDraft.splice(i,1); renderGalleryList(); });
-  });
-}
-$("#addGalleryBtn").addEventListener("click", ()=>{
-  state.galleryDraft.push("");
-  renderGalleryList();
-});
-
-/* --- Shrani članek --- */
-$("#articleSaveBtn").addEventListener("click", async ()=>{
-  const title = $("#fieldTitle").value.trim();
-  if(!title){ toast("Naslov članka je obvezen."); return; }
-  const category = $("#fieldCategory").value;
-
-  if(state.currentType==="strip"){
-    const panels = state.panelDraft.filter(p=>p.url && p.url.trim());
-    if(panels.length===0){ toast("Dodaj vsaj en panel s sliko."); return; }
-  } else {
-    const hasContent = state.contentDraft.some(b=> (b.type==="text" && b.value.trim()) || (b.type==="image" && b.url.trim()));
-    if(!hasContent){ toast("Dodaj vsaj en odstavek ali sliko."); return; }
-  }
-
-  let article;
-  const isNew = !state.editingId;
-  if(isNew){
-    article = { id: slugify(title) + "-" + uid().slice(-4), date: new Date().toISOString().slice(0,10) };
-  } else {
-    article = state.data.articles.find(a=>a.id===state.editingId);
-  }
-  article.type = state.currentType;
-  article.category = category;
-  article.author = $("#fieldAuthor").value.trim();
-  article.title = title;
-  article.summary = $("#fieldSummary").value.trim();
-  article.coverImage = $("#fieldCover").value.trim();
-
-  if(state.currentType==="strip"){
-    article.panels = state.panelDraft.filter(p=>p.url && p.url.trim());
-    delete article.content;
-    delete article.gallery;
-  } else {
-    article.content = state.contentDraft.filter(b=> (b.type==="text" && b.value.trim()) || (b.type==="image" && b.url.trim()));
-    article.gallery = state.galleryDraft.filter(u=>u && u.trim());
-  }
-
-  if(isNew) state.data.articles.push(article);
-
-  closeArticleModal();
-  renderGrid();
-  await persistChanges(isNew ? `Nov članek: ${title}` : `Posodobitev članka: ${title}`);
-});
-
-/* --- Izbriši članek --- */
-$("#deleteArticleBtn").addEventListener("click", ()=>{
-  state.pendingDeleteId = state.editingId;
-  closeArticleModal();
-  $("#deleteModalOverlay").hidden = false;
-});
-$("#deleteModalCloseBtn").addEventListener("click", ()=> $("#deleteModalOverlay").hidden = true);
-$("#deleteCancelBtn").addEventListener("click", ()=> $("#deleteModalOverlay").hidden = true);
-$("#deleteConfirmBtn").addEventListener("click", async ()=>{
-  const id = state.pendingDeleteId;
-  const article = state.data.articles.find(a=>a.id===id);
-  state.data.articles = state.data.articles.filter(a=>a.id!==id);
-  $("#deleteModalOverlay").hidden = true;
-  renderGrid();
-  await persistChanges(article ? `Izbris članka: ${article.title}` : "Izbris članka");
-});
-
-/* ============================================================
-   NASTAVITVE (GitHub, rubrike, naslov)
-   ============================================================ */
-function openSettingsModal(){
-  $("#ghToken").value = state.config.ghToken || "";
-  $("#ghOwner").value = state.config.ghOwner || "";
-  $("#ghRepo").value = state.config.ghRepo || "";
-  $("#ghBranch").value = state.config.ghBranch || "main";
-  $("#ghPath").value = state.config.ghPath || "articles.json";
-  $("#ghStatus").textContent = "";
-  $("#ghStatus").className = "gh-status";
-  $("#settingsTitleInput").value = state.data.settings.title || "";
-  $("#settingsSubtitleInput").value = state.data.settings.subtitle || "";
-  renderCategoryManageList();
-  $("#settingsModalOverlay").hidden = false;
-}
-$("#settingsBtn").addEventListener("click", openSettingsModal);
-$("#openSettingsBtn2").addEventListener("click", openSettingsModal);
-$("#settingsModalCloseBtn").addEventListener("click", ()=> $("#settingsModalOverlay").hidden = true);
-$("#settingsCloseBtn2").addEventListener("click", ()=> $("#settingsModalOverlay").hidden = true);
-
-$("#ghSaveBtn").addEventListener("click", ()=>{
-  state.config.ghToken = $("#ghToken").value.trim();
-  state.config.ghOwner = $("#ghOwner").value.trim();
-  state.config.ghRepo = $("#ghRepo").value.trim();
-  state.config.ghBranch = $("#ghBranch").value.trim() || "main";
-  state.config.ghPath = $("#ghPath").value.trim() || "articles.json";
-  saveConfig();
-  toast("Nastavitve GitHub shranjene.");
-});
-$("#ghTestBtn").addEventListener("click", async ()=>{
-  const owner = $("#ghOwner").value.trim();
-  const repo = $("#ghRepo").value.trim();
-  const token = $("#ghToken").value.trim();
-  const branch = $("#ghBranch").value.trim() || "main";
-  const path = $("#ghPath").value.trim() || "articles.json";
-  const statusEl = $("#ghStatus");
-  statusEl.textContent = "Preverjam povezavo…";
-  statusEl.className = "gh-status";
-  try{
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`;
-    const res = await fetch(url, { headers: token ? {"Authorization":"Bearer "+token, "Accept":"application/vnd.github+json"} : {"Accept":"application/vnd.github+json"} });
-    if(res.ok){
-      statusEl.textContent = "✓ Povezava uspešna — datoteka najdena.";
-      statusEl.className = "gh-status ok";
-    } else {
-      statusEl.textContent = "✕ Napaka: " + res.status + " (preveri lastnika, repo, vejo, pot in žeton).";
-      statusEl.className = "gh-status err";
-    }
-  }catch(e){
-    statusEl.textContent = "✕ Napaka pri povezavi: " + e.message;
-    statusEl.className = "gh-status err";
-  }
-});
-
-/* --- Rubrike --- */
-function renderCategoryManageList(){
-  const cats = state.data.settings.categories || [];
-  $("#categoryManageList").innerHTML = cats.map(c=>`
-    <div class="category-manage-item">
-      <span>${escapeHtml(c)}</span>
-      <button class="cat-del-btn" data-cat="${escapeHtml(c)}" title="Izbriši rubriko">✕</button>
-    </div>
-  `).join("") || `<p class="field-hint">Ni rubrik.</p>`;
-
-  $$(".cat-del-btn").forEach(btn=>{
-    btn.addEventListener("click", async ()=>{
-      const cat = btn.dataset.cat;
-      const used = state.data.articles.filter(a=>a.category===cat).length;
-      if(used>0){
-        if(!confirm(`Rubrika "${cat}" je uporabljena v ${used} člankih. Izbrisati kljub temu? (Članki bodo ostali brez rubrike.)`)) return;
-      }
-      state.data.settings.categories = state.data.settings.categories.filter(c=>c!==cat);
-      state.data.articles.forEach(a=>{ if(a.category===cat) a.category = ""; });
-      renderCategoryManageList();
-      renderCategoryNav();
-      renderGrid();
-      await persistChanges(`Izbris rubrike: ${cat}`);
-    });
-  });
-}
-$("#addCategoryBtn").addEventListener("click", async ()=>{
-  const input = $("#newCategoryInput");
-  const name = input.value.trim();
-  if(!name){ return; }
-  if(state.data.settings.categories.includes(name)){ toast("Ta rubrika že obstaja."); return; }
-  state.data.settings.categories.push(name);
-  input.value = "";
-  renderCategoryManageList();
-  renderCategoryNav();
-  await persistChanges(`Nova rubrika: ${name}`);
-});
-
-/* --- Naslov revije --- */
-$("#saveTitleBtn").addEventListener("click", async ()=>{
-  state.data.settings.title = $("#settingsTitleInput").value.trim() || "Radovedni";
-  state.data.settings.subtitle = $("#settingsSubtitleInput").value.trim();
-  applySettingsToUI();
-  await persistChanges("Posodobitev naslova revije");
-});
-
-/* --- Prenos JSON kot varnostna kopija --- */
-$("#downloadJsonBtn").addEventListener("click", ()=>{
-  const blob = new Blob([JSON.stringify(state.data, null, 2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = "articles.json";
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-/* ============================================================
-   ISKANJE
-   ============================================================ */
-$("#searchToggleBtn").addEventListener("click", ()=>{
-  const bar = $("#searchBar");
-  bar.hidden = !bar.hidden;
-  if(!bar.hidden) $("#searchInput").focus();
-});
-$("#searchInput").addEventListener("input", e=>{
-  state.searchTerm = e.target.value;
-  renderGrid();
-});
-
-/* ============================================================
-   ZAPIRANJE OVERLAYEV / OSTALI DOGODKI
-   ============================================================ */
-$("#stripCloseBtn").addEventListener("click", closeStripReader);
-$("#stripPrevBtn").addEventListener("click", prevPanel);
-$("#stripNextBtn").addEventListener("click", nextPanel);
-$("#storyCloseBtn").addEventListener("click", closeStoryReader);
-$("#lightboxCloseBtn").addEventListener("click", ()=> $("#lightbox").hidden = true);
-$("#lightbox").addEventListener("click", (e)=>{ if(e.target.id==="lightbox") $("#lightbox").hidden = true; });
-$("#refreshBtn").addEventListener("click", loadArticles);
-$("#logoLink").addEventListener("click", (e)=>{
-  e.preventDefault();
-  state.activeCategory = "__vse__";
-  state.searchTerm = "";
-  $("#searchInput").value = "";
-  renderCategoryNav();
-  renderGrid();
-  window.scrollTo({top:0, behavior:"smooth"});
-});
-
-// zapri modal overlay ob kliku izven njega
-$$(".modal-overlay").forEach(overlay=>{
-  overlay.addEventListener("click", (e)=>{ if(e.target===overlay) overlay.hidden = true; });
-});
-
-/* ============================================================
-   ZAGON
-   ============================================================ */
+$("#searchToggleBtn").onclick=()=>{const b=$("#searchBar");b.hidden=!b.hidden;if(!b.hidden)$("#searchInput").focus()};$("#searchInput").oninput=e=>{state.searchTerm=e.target.value;renderGrid()};
+$("#refreshBtn").onclick=loadArticles;$("#logoLink").onclick=e=>{e.preventDefault();state.activeCategory="__vse__";state.searchTerm="";$("#searchInput").value="";renderCategoryNav();renderGrid();scrollTo({top:0,behavior:"smooth"})};
+$("#stripCloseBtn").onclick=closeStrip;$("#stripPrevBtn").onclick=prevPanel;$("#stripNextBtn").onclick=nextPanel;$("#storyCloseBtn").onclick=closeStory;$("#lightboxCloseBtn").onclick=()=>$("#lightbox").hidden=true;$("#lightbox").onclick=e=>{if(e.target.id==="lightbox")$("#lightbox").hidden=true};
+$$(".modal-overlay").forEach(o=>o.onclick=e=>{if(e.target===o)o.hidden=true});
+let sx=null;$("#stripStage").ontouchstart=e=>sx=e.touches[0].clientX;$("#stripStage").ontouchend=e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)dx<0?nextPanel():prevPanel();sx=null};
+document.onkeydown=e=>{if(!$("#stripReader").hidden){if(e.key==="ArrowRight")nextPanel();if(e.key==="ArrowLeft")prevPanel();if(e.key==="Escape")closeStrip()}};
 loadArticles();
-
 })();
-
 </script>
 </body>
 </html>
